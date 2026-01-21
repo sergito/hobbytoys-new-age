@@ -1,0 +1,245 @@
+/**
+ * HobbyToys Pro - SCSS Variables
+ * All theme colors, typography, and design tokens
+ *
+ * @package HobbyToys_Pro
+ */
+
+// =============================================================================
+// COLORS - HobbyToys Brand Palette
+// =============================================================================
+
+// Primary Colors
+$ht-primary:    #EE285B !default;  // Rosa principal
+$ht-secondary:  #534fb5 !default;  // Púrpura
+$ht-accent:     #FFB900 !default;  // Amarillo
+
+// Supporting Colors
+$ht-cyan:       #0dcaf0 !default;
+$ht-green:      #198754 !default;
+$ht-orange:     #fd7e14 !default;
+$ht-red:        #dc3545 !default;
+$ht-pink:       #d63384 !default;
+$ht-purple:     #6f42c1 !default;
+$ht-blue:       #0d6efd !default;
+
+// Grayscale
+$ht-dark:       #2c3e50 !default;
+$ht-gray-dark:  #495057 !default;
+$ht-gray:       #6c757d !default;
+$ht-gray-light: #adb5bd !default;
+$ht-light:      #f8f9fa !default;
+$ht-white:      #ffffff !default;
+
+// Text Colors
+$text-primary:   $ht-dark !default;
+$text-secondary: $ht-gray !default;
+$text-muted:     $ht-gray-light !default;
+
+// Gradients
+$gradient-primary:   linear-gradient(135deg, $ht-primary, darken($ht-primary, 10%)) !default;
+$gradient-secondary: linear-gradient(135deg, $ht-secondary, darken($ht-secondary, 10%)) !default;
+$gradient-accent:    linear-gradient(135deg, $ht-accent, darken($ht-accent, 10%)) !default;
+
+// =============================================================================
+// TYPOGRAPHY
+// =============================================================================
+
+// Font Families
+$font-primary:   'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !default;
+$font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !default;
+$font-monospace: 'Courier New', monospace !default;
+
+// Font Weights
+$fw-light:     300 !default;
+$fw-regular:   400 !default;
+$fw-medium:    500 !default;
+$fw-semibold:  600 !default;
+$fw-bold:      700 !default;
+$fw-extrabold: 800 !default;
+$fw-black:     900 !default;
+
+// Font Sizes
+$fs-xs:    0.75rem  !default;  // 12px
+$fs-sm:    0.875rem !default;  // 14px
+$fs-base:  1rem     !default;  // 16px
+$fs-md:    1.125rem !default;  // 18px
+$fs-lg:    1.25rem  !default;  // 20px
+$fs-xl:    1.5rem   !default;  // 24px
+$fs-2xl:   2rem     !default;  // 32px
+$fs-3xl:   2.5rem   !default;  // 40px
+$fs-4xl:   3rem     !default;  // 48px
+
+// Line Heights
+$lh-tight:  1.25 !default;
+$lh-normal: 1.5  !default;
+$lh-loose:  1.75 !default;
+
+// =============================================================================
+// SPACING
+// =============================================================================
+
+$spacer: 1rem !default;
+
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,   // 4px
+  2: $spacer * 0.5,    // 8px
+  3: $spacer * 0.75,   // 12px
+  4: $spacer,          // 16px
+  5: $spacer * 1.5,    // 24px
+  6: $spacer * 2,      // 32px
+  7: $spacer * 2.5,    // 40px
+  8: $spacer * 3,      // 48px
+  9: $spacer * 4,      // 64px
+  10: $spacer * 5,     // 80px
+) !default;
+
+// =============================================================================
+// BORDERS & RADIUS
+// =============================================================================
+
+// Border Radius
+$border-radius-sm:  0.375rem !default;  // 6px
+$border-radius:     0.5rem   !default;  // 8px
+$border-radius-md:  0.75rem  !default;  // 12px
+$border-radius-lg:  1rem     !default;  // 16px
+$border-radius-xl:  1.5rem   !default;  // 24px
+$border-radius-pill: 50rem   !default;  // Circular
+
+// Border Widths
+$border-width:    1px !default;
+$border-width-lg: 2px !default;
+$border-width-xl: 3px !default;
+
+// Border Colors
+$border-color:       #dee2e6 !default;
+$border-color-light: #e9ecef !default;
+
+// =============================================================================
+// SHADOWS
+// =============================================================================
+
+$shadow-sm:  0 2px 4px rgba(0, 0, 0, 0.05) !default;
+$shadow:     0 2px 10px rgba(0, 0, 0, 0.08) !default;
+$shadow-md:  0 4px 15px rgba(0, 0, 0, 0.1) !default;
+$shadow-lg:  0 8px 25px rgba(0, 0, 0, 0.12) !default;
+$shadow-xl:  0 15px 40px rgba(0, 0, 0, 0.15) !default;
+
+// Product Card Shadows
+$card-shadow:       $shadow !default;
+$card-shadow-hover: $shadow-md !default;
+
+// =============================================================================
+// TRANSITIONS
+// =============================================================================
+
+$transition-fast:   0.15s ease-in-out !default;
+$transition-base:   0.3s ease-in-out !default;
+$transition-slow:   0.5s ease-in-out !default;
+
+$transition-all:    all $transition-base !default;
+$transition-color:  color $transition-fast !default;
+$transition-shadow: box-shadow $transition-base !default;
+
+// =============================================================================
+// BREAKPOINTS (Bootstrap Compatible)
+// =============================================================================
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+// =============================================================================
+// Z-INDEX LAYERS
+// =============================================================================
+
+$z-index-dropdown:      1000 !default;
+$z-index-sticky:        1020 !default;
+$z-index-fixed:         1030 !default;
+$z-index-modal-backdrop: 1040 !default;
+$z-index-modal:         1050 !default;
+$z-index-popover:       1060 !default;
+$z-index-tooltip:       1070 !default;
+
+// =============================================================================
+// PRODUCT CARD SPECIFIC
+// =============================================================================
+
+$product-card-bg:           $ht-white !default;
+$product-card-border:       $border-color-light !default;
+$product-card-border-radius: $border-radius-lg !default;
+$product-card-padding:      1.25rem !default;
+
+// Badge Colors (Category & Age)
+$badge-border-radius: $border-radius !default;
+$badge-padding-y:     0.375rem !default;
+$badge-padding-x:     0.75rem !default;
+$badge-font-size:     $fs-xs !default;
+$badge-font-weight:   $fw-semibold !default;
+
+// =============================================================================
+// CHECKOUT SPECIFIC
+// =============================================================================
+
+$checkout-step-size:       60px !default;
+$checkout-step-color:      $ht-gray-light !default;
+$checkout-step-active:     $ht-primary !default;
+$checkout-step-completed:  $ht-green !default;
+
+// =============================================================================
+// BUTTONS
+// =============================================================================
+
+$btn-border-radius:     $border-radius-md !default;
+$btn-padding-y:         0.75rem !default;
+$btn-padding-x:         1.5rem !default;
+$btn-font-weight:       $fw-bold !default;
+$btn-font-size:         $fs-base !default;
+
+$btn-padding-y-lg:      1rem !default;
+$btn-padding-x-lg:      2.5rem !default;
+$btn-font-size-lg:      $fs-lg !default;
+
+$btn-padding-y-sm:      0.5rem !default;
+$btn-padding-x-sm:      1rem !default;
+$btn-font-size-sm:      $fs-sm !default;
+
+// =============================================================================
+// FORMS
+// =============================================================================
+
+$input-border-radius:   $border-radius-md !default;
+$input-padding-y:       0.75rem !default;
+$input-padding-x:       1rem !default;
+$input-font-size:       $fs-base !default;
+$input-border-color:    $border-color !default;
+$input-focus-border:    $ht-primary !default;
+$input-bg:              $ht-white !default;
+
+// =============================================================================
+// SPECIFIC COMPONENT VARIABLES
+// =============================================================================
+
+// Header
+$header-height:         80px !default;
+$header-bg:             $ht-white !default;
+$header-shadow:         $shadow !default;
+
+// Footer
+$footer-bg:             $ht-dark !default;
+$footer-color:          $ht-white !default;
+
+// Price
+$price-color:           $ht-primary !default;
+$price-font-size:       $fs-xl !default;
+$price-font-weight:     $fw-black !default;
+
+// Sale Badge
+$sale-bg:               $ht-red !default;
+$sale-color:            $ht-white !default;
