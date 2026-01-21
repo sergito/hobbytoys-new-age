@@ -1,0 +1,96 @@
+// In this file you can override the default variables of Bootstrap
+// Do you want primary to be green? Just add "$primary: #00FF00;" to this file and the theme will automatically compile the scss for you.
+
+
+// Color system
+// scss-docs-start gray-color-variables
+$white:                           #fff;
+$gray-100:                        #f7f8fb; // grisito clarito
+$gray-200:                        #f4efe8; // grisito enrojecido
+
+$gray-300:                        #F4F9FC; // grisito azulado
+$gray-400:                        #7F8C8D; //text light
+
+$gray-500:                        #dee2e6; // gris border
+$gray-600:                        rgb(44, 62, 80); // color nombre producto cards nuevo sergio
+
+$gray-700:                        #292b2c; // color links header y titulo de las cards y texto gral body
+$gray-800:                        #16181b; // negro icon phone
+
+$gray-900:                        #212529; // EX color secondary
+$black:                           #000;
+
+
+// scss-docs-start color-variables
+$blue:                            #0d6efd;
+$indigo:                          #6610f2;
+
+$purple:                          #534fb5;
+
+$pink:                            #d63384;
+
+$red:                             #EE285B;
+
+$orange:                          #fd7e14;
+
+$yellow:                          #ffb900;
+
+$green:                           #198754;
+$teal:                            #20c997;
+$cyan:                            #0dcaf0;
+
+// scss-docs-start theme-color-variables
+$primary:                         $red;
+$secondary:                       $purple;
+
+$success:                         $green;
+$info:                            $yellow;
+$warning:                         $yellow;
+$danger:                          $red;
+
+$light:                           $gray-200;
+$dark:                            $gray-600;
+
+// Settings for the `<body>` element.
+$body-bg:                         $white;
+$body-color:                      $gray-700;
+
+$body-tertiary-color:             rgba($body-color, .5);
+$body-tertiary-bg:                $gray-200;
+
+// Dark mode
+$body-bg-dark:                    $purple;
+$body-color-dark:                 $gray-500;
+
+$body-tertiary-color-dark:        rgba($body-color-dark, .5);
+$body-tertiary-bg-dark:           mix($gray-800, $gray-900, 50%);
+
+// Navbar
+$navbar-light-color:              rgba($black, .55);
+$navbar-light-hover-color:        rgba($black, .7);
+$navbar-light-active-color:       rgba($black, .9);
+
+
+// Border radius
+$border-radius:                   0.375rem;
+$border-radius-sm:                0.375rem;
+$border-radius-lg:                0.375rem;
+$border-radius-xl:                0.375rem;
+$border-radius-2xl:               0.375rem;
+$border-radius-pill:              0.375rem;
+// Checkboxes
+$form-check-input-border-radius:  0.375rem;
+
+
+// Style anchor elements.
+$link-decoration:                 none;
+$link-hover-decoration:           null;
+
+
+// Fonts
+$font-family-base:                "Nunito", sans-serif;
+
+// Headings & display
+$headings-font-family:            "Nunito", sans-serif;
+$headings-font-weight:            500;
+$display-font-weight:             300;

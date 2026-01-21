@@ -1,0 +1,102 @@
+<?php
+/**
+ * The template for displaying all WooCommerce pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package Bootscore
+ * @version 6.1.0
+ */
+
+// Exit if accessed directly
+defined('ABSPATH') || exit;
+
+get_header();
+?>
+
+  <div class="breadcrumb_section page-title-mini">
+    <div class="container"><!-- STRART CONTAINER -->
+        <div class="row align-items-center">
+        	  <div class="col-12 text-center">
+                <div class="page-title">
+            		   <h1>
+                     <?php
+                        // Si es una taxonomía de producto (atributos como edad, marca, etc.)
+                        if ( is_tax() ) {
+                            $term = get_queried_object();
+                            if ( $term && ! is_wp_error( $term ) ) {
+                                echo esc_html( $term->name );
+                            }
+                        }
+                        // Si es una categoría de producto
+                        elseif ( is_product_category() ) {
+                            $term = get_queried_object();
+                            if ( $term && ! is_wp_error( $term ) ) {
+                                echo esc_html( $term->name );
+                            }
+                        }
+                        // Si es una etiqueta de producto
+                        elseif ( is_product_tag() ) {
+                            $term = get_queried_object();
+                            if ( $term && ! is_wp_error( $term ) ) {
+                                echo esc_html( $term->name );
+                            }
+                        }
+                        // Si hay una categoría en la query string (como ?product-cat=bebes)
+                        elseif ( isset( $_GET['product-cat'] ) ) {
+                            $slug = sanitize_text_field( $_GET['product-cat'] );
+                            $term = get_term_by( 'slug', $slug, 'product_cat' );
+
+                            if ( $term && ! is_wp_error( $term ) ) {
+                                echo esc_html( $term->name );
+                            }
+                        }
+                        // Si estás en la página de producto
+                        elseif ( is_product() ) {
+                            // No mostrar título en producto individual
+                        }
+                        // Página general de tienda (sin categoría)
+                        elseif ( is_shop() ) {
+                            echo 'Tienda';
+                        }
+                     ?>
+                   </h1>
+                </div>
+            </div>
+        </div>
+    </div><!-- END CONTAINER-->
+  </div>
+
+  <div id="content" class="site-content <?= apply_filters('bootscore/class/container', 'container', 'woocommerce'); ?> <?= apply_filters('bootscore/class/content/spacer', 'pt-3 mt-1 pb-5', 'woocommerce'); ?>">
+    <div id="primary" class="content-area">
+
+      <?php do_action( 'bootscore_after_primary_open', 'woocommerce' ); ?>
+      <?php woocommerce_breadcrumb(); ?>
+
+      <main id="main" class="site-main"> 
+
+          <div class="row">
+             <?php if ( is_shop() || is_product_category() ) : ?>
+                 <div class="<?= apply_filters('bootscore/class/main/col', 'col'); ?>">
+                   <?php woocommerce_content(); ?>
+                 </div>
+                 <?php get_sidebar(); ?>
+             <?php else: ?>
+                 <div class="col-12">
+                   <?php woocommerce_content(); ?>
+                 </div>
+             <?php endif; ?>
+          </div><!-- row -->
+
+      </main><!-- #main -->
+
+    </div><!-- #primary -->
+  </div><!-- #content -->
+  
+<?php
+get_footer();

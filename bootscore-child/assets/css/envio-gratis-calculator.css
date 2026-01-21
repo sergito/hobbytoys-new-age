@@ -1,0 +1,632 @@
+/**
+ * Calculadora de Envío Gratis - Estilos CSS
+ * Hobby Toys - WooCommerce
+ * 
+ * @package HobbyToys
+ * @version 1.0.0
+ */
+
+:root {
+    --primary-color: #EE285B;
+    --secondary-color: #534fb5;
+    --accent-color: #FFB900;
+    --text-dark: #2C3E50;
+    --light-bg: #F8F9FA;
+    --success-color: #059669;
+    --warning-color: #FFB900;
+}
+
+
+/* ============================================
+   1. MODAL CALCULADORA
+============================================ */
+
+/* Asegurar que el modal esté por encima de todo */
+#htShippingCalculatorModal {
+    z-index: 99999 !important;
+}
+
+#htShippingCalculatorModal .modal-backdrop {
+    z-index: 99998 !important;
+}
+
+.modal-backdrop.show {
+    z-index: 99998 !important;
+}
+
+#htShippingCalculatorModal .modal-content {
+    border: none;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(238, 40, 91, 0.15);
+}
+
+#htShippingCalculatorModal .modal-header {
+    border-bottom: none;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+#htShippingCalculatorModal .modal-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+#htShippingCalculatorModal .modal-body {
+    padding: 1.5rem 2rem 2rem 2rem;
+}
+
+#htShippingCalculatorModal .modal-footer {
+    border-top: none;
+    padding: 1rem 2rem 1.5rem 2rem;
+}
+
+
+/* ============================================
+   2. FORMULARIO
+============================================ */
+
+#htShippingCalculatorForm .form-control {
+    border: 2px solid var(--light-bg);
+    border-radius: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+#htShippingCalculatorForm .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(238, 40, 91, 0.15);
+    background: #fff;
+}
+
+#htShippingCalculatorForm .form-control::placeholder {
+    letter-spacing: normal;
+    font-weight: 400;
+}
+
+#htShippingCalculatorForm .form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+
+/* ============================================
+   3. ZONAS DE ENVÍO INFO
+============================================ */
+
+.shipping-zones-info {
+    background: linear-gradient(135deg, rgba(248, 249, 250, 0.5), rgba(255, 251, 230, 0.3));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 2px solid rgba(238, 40, 91, 0.08);
+}
+
+.shipping-zones-info h6 {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.zone-info-card {
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.zone-info-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.zone-info-card .zone-icon {
+    transition: transform 0.3s ease;
+}
+
+.zone-info-card:hover .zone-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+
+/* ============================================
+   4. RESULTADO DEL CÁLCULO
+============================================ */
+
+.shipping-result {
+    margin-top: 1.5rem;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.shipping-result .alert {
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.shipping-result .result-content {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Barra de progreso en resultado */
+.shipping-result .progress-container {
+    background: rgba(248, 249, 250, 0.5);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.shipping-result .progress {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-result .progress-bar {
+    transition: width 0.6s ease;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.shipping-result .progress-label {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.shipping-result .progress-percentage {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+
+/* ============================================
+   5. BOTONES
+============================================ */
+
+#htCalculateBtn,
+#htClearZoneBtn {
+    border-radius: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+#htCalculateBtn {
+    background: var(--primary-color);
+    border: none;
+    box-shadow: 0 8px 20px rgba(238, 40, 91, 0.25);
+}
+
+#htCalculateBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(238, 40, 91, 0.35);
+}
+
+#htCalculateBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+#htClearZoneBtn {
+    border: 2px solid var(--light-bg);
+    background: white;
+    color: var(--text-dark);
+}
+
+#htClearZoneBtn:hover {
+    background: var(--light-bg);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Botón en el menú */
+.ht-open-shipping-calculator {
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 900;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    color:#fff;
+    border: 2px solid #ffb903;
+    margin-top: 7px;
+}
+
+.ht-open-shipping-calculator:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(238, 40, 91, 0.2);
+    color: white;
+}
+
+
+/* ============================================
+   6. BARRA DE PROGRESO EN HEADER - COMPACTA Y SIN DEGRADÉ
+============================================ */
+
+.ht-shipping-progress-bar-container {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: #f8f9fa; /* Color sólido sin degradé */
+    border-bottom: 1px solid rgba(238, 40, 91, 0.15);
+    position: relative;
+}
+
+.ht-shipping-progress-bar {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex; /* Cambiado de none a flex */
+    align-items: center;
+    gap: 1rem;
+}
+
+.ht-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    gap: 0.75rem;
+    margin-bottom: 0; /* Removido margen inferior */
+}
+
+.ht-zone-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--primary-color); /* Color sólido sin degradé */
+    color: white;
+    padding: 0.3rem 0.75rem;
+    border-radius: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(238, 40, 91, 0.2);
+    white-space: nowrap;
+}
+
+.ht-progress-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    white-space: nowrap;
+}
+
+.ht-progress-text strong {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.ht-progress-text .text-success {
+    color: var(--success-color) !important;
+}
+
+/* Barra de progreso - una sola línea compacta */
+.ht-progress-bar-wrapper {
+    position: relative;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    overflow: hidden;
+    flex: 0 0 200px; /* Ancho fijo más compacto */
+    min-width: 150px;
+}
+
+.ht-progress-bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--warning-color); /* Color sólido sin degradé */
+    border-radius: 1rem;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ht-progress-bar-fill.is-free {
+    background: var(--success-color); /* Color sólido sin degradé */
+}
+
+/* Removida la animación shimmer para simplicidad */
+.ht-progress-bar-fill::after {
+    display: none;
+}
+
+
+/* ============================================
+   7. RESPONSIVE
+============================================ */
+
+@media (max-width: 767.98px) {
+    /* Modal */
+    #htShippingCalculatorModal .modal-body {
+        padding: 1rem 1.25rem 1.5rem 1.25rem;
+    }
+    
+    #htShippingCalculatorModal .modal-header {
+        padding: 1.5rem 1.25rem 0.75rem 1.25rem;
+    }
+    
+    #htShippingCalculatorModal .modal-title {
+        font-size: 1.25rem;
+    }
+    
+    /* Zonas info en mobile */
+    .shipping-zones-info {
+        padding: 1rem;
+    }
+    
+    .zone-info-card {
+        padding: 0.75rem !important;
+    }
+    
+    .zone-info-card h6 {
+        font-size: 0.9rem;
+    }
+    
+    .zone-info-card p {
+        font-size: 1rem !important;
+    }
+    
+    /* Barra de progreso en header - COMPACTA EN UNA LÍNEA */
+    .ht-shipping-progress-bar-container {
+        padding: 0.35rem 0.5rem;
+    }
+
+    .ht-shipping-progress-bar {
+        gap: 0.5rem;
+    }
+
+    .ht-progress-info {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1;
+    }
+
+    .ht-zone-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+        gap: 0.25rem;
+    }
+
+    .ht-progress-text {
+        font-size: 0.75rem;
+    }
+
+    .ht-progress-text strong {
+        font-size: 0.8rem;
+    }
+
+    .ht-progress-bar-wrapper {
+        flex: 0 0 80px;
+        min-width: 80px;
+        height: 8px;
+    }
+
+    /* Botón en menú más pequeño y mejorado para móvil */
+    .ht-open-shipping-calculator {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        margin-top: 5px !important;
+        border-radius: 1.5rem !important;
+        white-space: nowrap;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #fff !important;
+        border: 2px solid #ffb903 !important;
+        color: #EE285B !important;
+    }
+
+    .ht-open-shipping-calculator i {
+        font-size: 1.2rem !important;
+        margin-right: 0 !important;
+    }
+
+    .ht-open-shipping-calculator:hover {
+        background: #ffb903 !important;
+        color: #fff !important;
+        transform: translateY(-1px);
+    }
+
+    .ht-open-shipping-calculator .d-none.d-lg-inline {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Tablet adjustments */
+    .ht-shipping-progress-bar-container {
+        padding: 0.625rem 0.875rem;
+    }
+}
+
+
+/* ============================================
+   8. ANIMACIONES
+============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.ht-zone-badge {
+    animation: pulse 3s infinite ease-in-out;
+}
+
+
+/* ============================================
+   9. ESTADOS ESPECIALES
+============================================ */
+
+/* Loading state */
+.ht-shipping-calculator-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.ht-shipping-calculator-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border: 3px solid rgba(238, 40, 91, 0.2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success state */
+.shipping-result .alert-success {
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(6, 214, 160, 0.1));
+    border-left: 4px solid var(--success-color);
+}
+
+/* Warning state */
+.shipping-result .alert-warning {
+    background: linear-gradient(135deg, rgba(255, 185, 0, 0.1), rgba(255, 140, 0, 0.1));
+    border-left: 4px solid var(--warning-color);
+}
+
+/* Error state */
+.shipping-result .alert-danger {
+    background: linear-gradient(135deg, rgba(238, 40, 91, 0.1), rgba(220, 38, 38, 0.1));
+    border-left: 4px solid var(--primary-color);
+}
+
+
+/* ============================================
+   10. UTILIDADES
+============================================ */
+
+/* Ocultar elementos por defecto */
+.ht-shipping-progress-data {
+    display: none !important;
+}
+
+/* Badges personalizados */
+.ht-custom-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ht-custom-badge.badge-la-plata {
+    background: linear-gradient(135deg, var(--primary-color), #FF1744);
+    color: white;
+}
+
+.ht-custom-badge.badge-nacional {
+    background: linear-gradient(135deg, var(--secondary-color), #7C3AED);
+    color: white;
+}
+
+
+/* ============================================
+   11. ACCESIBILIDAD
+============================================ */
+
+/* Focus states mejorados */
+#htShippingCalculatorForm input:focus,
+#htShippingCalculatorForm button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Skip to content para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+
+/* ============================================
+   12. COMPATIBILIDAD CON TEMAS
+============================================ */
+
+/* Override de estilos de Bootstrap si es necesario */
+.modal-backdrop.show {
+    opacity: 0.6;
+}
+
+#htShippingCalculatorModal .btn-close {
+    opacity: 1;
+}
+
+/* Asegurar que los iconos de Bootstrap Icons se vean bien */
+.bi {
+    vertical-align: -0.125em;
+}
+
+
+/* ============================================
+   13. PRINT STYLES
+============================================ */
+
+@media print {
+    .ht-shipping-progress-bar-container,
+    .ht-open-shipping-calculator,
+    #htShippingCalculatorModal {
+        display: none !important;
+    }
+}
+
+
+/* ============================================
+   14. DARK MODE SUPPORT (OPCIONAL)
+============================================ */
+
+@media (prefers-color-scheme: dark) {
+    /* Si el tema soporta dark mode, ajustar colores */
+    .ht-shipping-progress-bar-container {
+        background: linear-gradient(135deg, rgba(238, 40, 91, 0.1), rgba(83, 79, 181, 0.1));
+    }
+    
+    .shipping-zones-info {
+        background: linear-gradient(135deg, rgba(31, 41, 55, 0.5), rgba(55, 65, 81, 0.3));
+    }
+}

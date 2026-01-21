@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Nuevas Funcionalidades | Hobby Toys</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #EE285B;
+            --secondary-color: #534fb5;
+            --accent-color: #ffb900;
+            --light-bg: #f4efe8;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .feature-badge {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .product-image-container {
+            position: relative;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            z-index: 5;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .product-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .product-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .info-box {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .info-box h4 {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-box ul li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .info-box ul li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .demo-note {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <a href="#" class="logo">
+                    <i class="bi bi-gift-fill me-2"></i>Hobby Toys
+                </a>
+            </div>
+            <div class="col-6 text-end">
+                <form class="d-inline-block" style="max-width: 400px; width: 100%;">
+                    <input type="search" class="form-control search-input"
+                           placeholder="Buscar productos..."
+                           style="border-radius: 25px; padding: 10px 20px;">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">
+            <i class="bi bi-stars me-2"></i>Nuevas Funcionalidades
+        </h1>
+        <p class="lead mb-4 animate__animated animate__fadeInUp">
+            Descubre las mejoras en tu experiencia de compra
+        </p>
+        <div class="animate__animated animate__fadeInUp animate__delay-1s">
+            <span class="feature-badge">
+                <i class="bi bi-eye me-1"></i>Quick View
+            </span>
+            <span class="feature-badge">
+                <i class="bi bi-heart me-1"></i>Wishlist
+            </span>
+            <span class="feature-badge">
+                <i class="bi bi-search me-1"></i>Búsqueda Ajax
+            </span>
+            <span class="feature-badge">
+                <i class="bi bi-whatsapp me-1"></i>WhatsApp Flotante
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- Nota Demo -->
+<div class="container mt-5">
+    <div class="demo-note animate__animated animate__fadeIn">
+        <h5>
+            <i class="bi bi-info-circle-fill me-2"></i>Instrucciones de Demo
+        </h5>
+        <p class="mb-2">Esta página demuestra las 4 nuevas funcionalidades implementadas:</p>
+        <ol class="mb-0">
+            <li><strong>Quick View:</strong> Haz hover sobre un producto y haz click en "Vista Rápida"</li>
+            <li><strong>Wishlist:</strong> Haz click en el corazón de cualquier producto o en el botón flotante rojo</li>
+            <li><strong>Búsqueda Ajax:</strong> Escribe en el buscador del header (ej: "lego", "drone", "barbie")</li>
+            <li><strong>WhatsApp Flotante:</strong> Observa el botón verde en la esquina inferior derecha</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Productos -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">
+            <i class="bi bi-box2-heart me-2"></i>Productos Destacados
+        </h2>
+
+        <div class="row">
+            <!-- Producto 1 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge">-35%</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Lego+Santa"
+                             alt="Set LEGO Casa de Santa Claus">
+                    </div>
+                    <h3 class="product-name">Set LEGO Casa de Santa Claus</h3>
+                    <div class="product-price">$84.49</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge" style="background: #28a745;">¡Nuevo!</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Peluche+Reno"
+                             alt="Peluche Reno Rudolph">
+                    </div>
+                    <h3 class="product-name">Peluche Reno Rudolph Gigante</h3>
+                    <div class="product-price">$49.99</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge" style="background: #FFB900; color: #2C3E50;">Regalo</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Tren+Navidad"
+                             alt="Tren Navideño">
+                    </div>
+                    <h3 class="product-name">Tren Navideño Eléctrico Deluxe</h3>
+                    <div class="product-price">$149.99</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge">Top Ventas</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Barbie+Navidad"
+                             alt="Barbie Navidad">
+                    </div>
+                    <h3 class="product-name">Barbie Edición Navidad 2024</h3>
+                    <div class="product-price">$69.99</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge" style="background: #28a745;">¡Nuevo!</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Drone+Navidad"
+                             alt="Drone Navideño">
+                    </div>
+                    <h3 class="product-name">Drone Navideño con Luces LED</h3>
+                    <div class="product-price">$119.99</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge">-45%</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Pista+Carreras"
+                             alt="Pista de Carreras">
+                    </div>
+                    <h3 class="product-name">Pista de Carreras Navideña XL</h3>
+                    <div class="product-price">$54.99</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge" style="background: #FFB900; color: #2C3E50;">Con Regalo</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Robot+Programable"
+                             alt="Robot Programable">
+                    </div>
+                    <h3 class="product-name">Robot Programable Educativo</h3>
+                    <div class="product-price">$129.99</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card">
+                    <span class="product-badge">-30%</span>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Cocina+Juguete"
+                             alt="Cocina de Juguete">
+                    </div>
+                    <h3 class="product-name">Cocina de Juguete Deluxe</h3>
+                    <div class="product-price">$111.99</div>
+                    <button class="product-btn">
+                        <i class="bi bi-cart-plus me-1"></i>Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Información de Funcionalidades -->
+<section class="section" style="background: white;">
+    <div class="container">
+        <h2 class="section-title">
+            <i class="bi bi-lightning-fill me-2"></i>Funcionalidades Implementadas
+        </h2>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="info-box">
+                    <h4><i class="bi bi-eye-fill me-2" style="color: #EE285B;"></i>Quick View</h4>
+                    <ul>
+                        <li>Vista rápida de productos</li>
+                        <li>Modal con información completa</li>
+                        <li>Galería de imágenes</li>
+                        <li>Agregar al carrito directo</li>
+                        <li>Compartir en redes sociales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="info-box">
+                    <h4><i class="bi bi-heart-fill me-2" style="color: #EE285B;"></i>Wishlist</h4>
+                    <ul>
+                        <li>Guardar productos favoritos</li>
+                        <li>Almacenamiento local</li>
+                        <li>Botón flotante animado</li>
+                        <li>Modal de lista completa</li>
+                        <li>Compartir lista por WhatsApp</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="info-box">
+                    <h4><i class="bi bi-search me-2" style="color: #EE285B;"></i>Búsqueda Ajax</h4>
+                    <ul>
+                        <li>Resultados en tiempo real</li>
+                        <li>Autocompletado inteligente</li>
+                        <li>Búsquedas recientes</li>
+                        <li>Filtros por categoría</li>
+                        <li>Navegación con teclado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="info-box">
+                    <h4><i class="bi bi-whatsapp me-2" style="color: #25D366;"></i>WhatsApp</h4>
+                    <ul>
+                        <li>Botón flotante animado</li>
+                        <li>ChatBox interactivo</li>
+                        <li>Mensajes rápidos</li>
+                        <li>Mensaje personalizado</li>
+                        <li>Horario de atención</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4" style="background: #2C3E50; color: white;">
+    <div class="container">
+        <p class="mb-0">
+            <i class="bi bi-gift-fill me-2"></i>
+            © 2025 Hobby Toys - Demo de Nuevas Funcionalidades
+        </p>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Nuestros Scripts -->
+<script src="assets/js/quick-view.js"></script>
+<script src="assets/js/wishlist.js"></script>
+<script src="assets/js/ajax-search.js"></script>
+<script src="assets/js/whatsapp-float.js"></script>
+
+</body>
+</html>

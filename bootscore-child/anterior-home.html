@@ -1,0 +1,188 @@
+<!-- START SECTION BANNER -->
+      <div class="banner_section slide_medium shop_banner_slider">
+
+        <div class="swiper slider-main">
+          <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide background_bg hero-slide-1">
+              <div class="banner_slide_content banner_content_inner container h-100">
+                <div class="row h-100 align-items-center">
+                  <div class="col-lg-7 col-6 banner_content overflow-hidden">
+                    <div class="banner_content-in">
+                        <h2 class="staggered-animation" data-animation="animate__slideInLeft" data-delay="500">LED 75 INCH F58</h2>
+                        <h5 class="staggered-animation mb-4" data-animation="animate__slideInLeft" data-delay="1000">Get up to <span class="text_default">50%</span> off Today Only!</h5>
+                        <a class="btn btn-secondary staggered-animation text-uppercase" data-animation="animate__slideInLeft" data-delay="1500" href="#!">Shop Now</a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-5 col-6 banner_content overflow-hidden align-items-center d-flex justify-content-center">
+                     <div class="sliderImgContainer">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/slider-img.webp" class="img-fluid" alt="" />
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide background_bg hero-slide-2">
+              <div class="banner_slide_content banner_content_inner container h-100">
+                <div class="row h-100 align-items-center">
+                  <div class="col-lg-7 col-6 banner_content overflow-hidden">
+                    <div class="banner_content-in">
+                      <h2 class="staggered-animation" data-animation="animate__slideInLeft" data-delay="500">Smart Phones</h2>
+                      <h5 class="staggered-animation mb-4" data-animation="animate__slideInLeft" data-delay="1000"><span class="text_default">50%</span> off in all products</h5>
+                      <a class="btn btn-secondary staggered-animation text-uppercase" data-animation="animate__slideInLeft" data-delay="1500" href="#!">Shop Now</a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-5 col-6 banner_content overflow-hidden align-items-center">
+                     <div class="sliderImgContainer">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/slider-img-2.webp" class="img-fluid" alt="" />
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide background_bg hero-slide-3">
+              <div class="banner_slide_content banner_content_inner container h-100">
+                <div class="row h-100 align-items-center">
+                  <div class="col-lg-7 col-6 banner_content overflow-hidden">
+                    <div class="banner_content-in">
+                        <h2 class="staggered-animation" data-animation="animate__slideInLeft" data-delay="500">Beat Headphone</h2>
+                        <h5 class="staggered-animation mb-4" data-animation="animate__slideInLeft" data-delay="1000">Taking your Viewing Experience to Next Level</h5>
+                        <a class="btn btn-secondary staggered-animation text-uppercase" data-animation="animate__slideInLeft" data-delay="1500" href="#!">Shop Now</a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-5 col-6 banner_content overflow-hidden align-items-center">
+                     <div class="sliderImgContainer">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/slider-img-3.webp" class="img-fluid" alt="" />
+                     </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+
+      </div>
+      <!-- END SECTION BANNER -->
+
+      <!-- CARRUSEL -->
+      <section class="carrusel-seccion bg-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-0">
+                    <h2 class="titularCarrusel">Aire Libre</h2>
+                </div>
+            </div>
+
+            <div class="customNavigation home pb-1">
+               <a class="btn customPrevBtn"><i class="fa-solid fa-arrow-left"></i></a>
+               <a class="btn customNextBtn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <?php
+                $productosCarrusel2 = [45576,45575,45571,45049,45048,43720,43700,43689];
+            ?>
+            <div class="swiper productsCarruselHome woocommerce">
+              <div class="swiper-wrapper">
+                <?php foreach ( $productosCarrusel2 as $idProducto ) : ?>
+
+                  <?php
+                    $post_object = get_post( $idProducto );
+
+                    setup_postdata( $GLOBALS['post'] =& $post_object ); 
+
+                    wc_get_template_part( 'content', 'productCarrusel');
+                  ?>
+
+                <?php endforeach; ?>
+              </div>
+            </div>
+                
+        </div>
+      </section>
+      <!-- FIN CARRUSEL -->
+
+      <!-- CARRUSEL -->
+      <section class="carrusel-seccion carrusel-seccion-yellow">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-0">
+                    <h2 class="titularCarrusel">JUEGOS DE MESA</h2>
+                </div>
+            </div>
+
+            <div class="customNavigation home pb-1">
+               <a class="btn customPrevBtn"><i class="fa-solid fa-arrow-left"></i></a>
+               <a class="btn customNextBtn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <?php
+               $productosCarrusel = [45851,45822,45760,45640,45566,45238,45032,45046,45031,45020,45017];
+            ?>
+            <div class="swiper productsCarruselHome woocommerce">
+              <div class="swiper-wrapper">
+                <?php foreach ( $productosCarrusel as $idProducto ) : ?>
+
+                  <?php
+                    $post_object = get_post( $idProducto );
+
+                    setup_postdata( $GLOBALS['post'] =& $post_object ); 
+
+                    wc_get_template_part( 'content', 'productCarrusel');
+                  ?>
+
+                <?php endforeach; ?>
+              </div>
+            </div>
+                
+        </div>
+      </section>
+      <!-- FIN CARRUSEL -->
+
+      <!-- CARRUSEL -->
+      <section class="carrusel-seccion bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-0">
+                    <h2 class="titularCarrusel">Aire Libre</h2>
+                </div>
+            </div>
+
+            <div class="customNavigation home pb-1">
+               <a class="btn customPrevBtn"><i class="fa-solid fa-arrow-left"></i></a>
+               <a class="btn customNextBtn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <?php
+                $productosCarrusel2 = [45576,45575,45571,45049,45048,43720,43700,43689];
+            ?>
+            <div class="swiper productsCarruselHome woocommerce">
+              <div class="swiper-wrapper">
+                <?php foreach ( $productosCarrusel2 as $idProducto ) : ?>
+
+                  <?php
+                    $post_object = get_post( $idProducto );
+
+                    setup_postdata( $GLOBALS['post'] =& $post_object ); 
+
+                    wc_get_template_part( 'content', 'productCarrusel');
+                  ?>
+
+                <?php endforeach; ?>
+              </div>
+            </div>
+                
+        </div>
+      </section>
+      <!-- FIN CARRUSEL -->

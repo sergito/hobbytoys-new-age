@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Envíos - Hobby toys</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="../hts/style.css"/>
+ 
+</head>
+<!-- HEADER PRINCIPAL -->
+<header id="main-header" class="site-header shadow-sm">
+  <nav class="navbar navbar-expand-lg bg-white">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://hobby-toys.com.ar/wp-content/themes/bootscore-child/assets/images/logo-svg.svg" alt="Hobby toys Logo" style="height:44px;max-width:140px;">
+      </a>
+      <!-- Botón Categorías (Dropdown Desktop, Offcanvas Mobile) -->
+      <div class="d-flex align-items-center">
+        <!-- Mobile: Offcanvas -->
+        <button class="btn btn-primary d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategorias" aria-controls="offcanvasCategorias">
+          <i class="bi bi-list"></i> Categorías
+        </button>
+        <!-- Desktop: Dropdown -->
+        <div class="dropdown d-none d-lg-block">
+          <button class="btn fw-bold px-3" type="button" id="dropdownCategorias" data-bs-toggle="dropdown" aria-expanded="false"
+            style="background: var(--light-bg); color: var(--primary-color); border-radius: 2rem;">
+            Categorías <i class="bi bi-chevron-down ms-1"></i>
+          </button>
+          <ul class="dropdown-menu categorias-dropdown shadow border-0 mt-2" aria-labelledby="dropdownCategorias">
+            <li><a class="dropdown-item" href="#">Aire Libre</a></li>
+            <li><a class="dropdown-item" href="#">Bloques y Ladrillos</a></li>
+            <li><a class="dropdown-item" href="#">Juegos de Mesa</a></li>
+            <li><a class="dropdown-item" href="#">Didácticos</a></li>
+            <li><a class="dropdown-item" href="#">Muñecas</a></li>
+            <li><a class="dropdown-item" href="#">Rodados</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Buscador -->
+      <form class="d-none d-md-flex mx-3 flex-grow-1" style="max-width:400px;" role="search">
+        <input class="form-control rounded-pill me-2" type="search" placeholder="¿Qué juguete buscas hoy?" aria-label="Buscar">
+        <button class="btn btn-outline-primary rounded-pill" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      <!-- Toggler para móviles -->
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavMenu" aria-controls="mainNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Menú principal responsive -->
+      <div class="collapse navbar-collapse" id="mainNavMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 w-100 justify-content-lg-end align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Envíos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Promociones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Contacto</a>
+          </li>
+          <!-- Acciones: login y carrito en mobile -->
+          <li class="nav-item d-lg-none text-center mt-2">
+            <a href="#" class="btn btn-outline-primary rounded-circle me-2" aria-label="Iniciar sesión">
+              <i class="bi bi-person fs-5"></i>
+            </a>
+            <a href="#" class="btn btn-outline-primary rounded-pill d-inline-flex align-items-center position-relative" style="min-width:70px;">
+              <i class="bi bi-cart3 fs-5"></i>
+              <span class="ms-2" style="font-weight:500;">$12.500</span>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size:.8rem;">3</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Acciones: Login y Carrito (desktop) -->
+      <div class="d-none d-lg-flex align-items-center ms-1">
+        <a href="#" class="btn btn-outline-primary rounded-circle me-2" aria-label="Iniciar sesión">
+          <i class="bi bi-person fs-5"></i>
+        </a>
+        <a href="#" class="btn btn-outline-primary rounded-pill d-flex align-items-center position-relative" style="min-width:70px;">
+          <i class="bi bi-cart3 fs-5"></i>
+          <span class="ms-2 d-none d-md-inline" style="font-weight:500;">$12.500</span>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size:.8rem;">3</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- Offcanvas Categorías Mobile -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCategorias" aria-labelledby="offcanvasCategoriasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasCategoriasLabel">Categorías</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled">
+        <li><a href="#" class="d-block py-2 text-decoration-none">Aire Libre</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Bloques y Ladrillos</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Juegos de Mesa</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Didácticos</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Muñecas</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Rodados</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- HEADER STICKY (compacto al hacer scroll) -->
+<header id="sticky-header" class="site-header sticky-header shadow-sm py-2 bg-white" style="display:none; position:fixed; top:0; left:0; width:100%; z-index:1030;">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="https://hobby-toys.com.ar/wp-content/themes/bootscore-child/assets/images/logo-svg.svg" alt="Hobby toys Logo" style="height:38px;max-width:120px;">
+    </a>
+    <div class="dropdown d-none d-lg-block me-2">
+      <button class="btn fw-bold px-3" type="button" id="dropdownCategoriasSticky" data-bs-toggle="dropdown" aria-expanded="false"
+        style="background: var(--light-bg); color: var(--primary-color); border-radius: 2rem;">
+        Categorías <i class="bi bi-chevron-down ms-1"></i>
+      </button>
+      <ul class="dropdown-menu categorias-dropdown shadow border-0 mt-2" aria-labelledby="dropdownCategoriasSticky">
+        <li><a class="dropdown-item" href="#">Aire Libre</a></li>
+        <li><a class="dropdown-item" href="#">Bloques y Ladrillos</a></li>
+        <li><a class="dropdown-item" href="#">Juegos de Mesa</a></li>
+        <li><a class="dropdown-item" href="#">Didácticos</a></li>
+        <li><a class="dropdown-item" href="#">Muñecas</a></li>
+        <li><a class="dropdown-item" href="#">Rodados</a></li>
+      </ul>
+    </div>
+    <form class="d-none d-md-flex mx-2 flex-grow-1" style="max-width:350px;" role="search">
+      <input class="form-control rounded-pill me-2" type="search" placeholder="¿Qué juguete buscas hoy?" aria-label="Buscar">
+      <button class="btn btn-outline-primary rounded-pill" type="submit"><i class="bi bi-search"></i></button>
+    </form>
+    <ul class="nav mb-0 align-items-center gap-2 ms-2 d-none d-lg-flex">
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Nosotros</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Envíos</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Promociones</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Contacto</a></li>
+    </ul>
+    <div class="d-flex align-items-center ms-2">
+      <a href="#" class="btn btn-outline-primary rounded-circle me-2" aria-label="Iniciar sesión">
+        <i class="bi bi-person fs-5"></i>
+      </a>
+      <a href="#" class="btn btn-outline-primary rounded-pill d-flex align-items-center position-relative" style="min-width:70px;">
+        <i class="bi bi-cart3 fs-5"></i>
+        <span class="ms-2 d-none d-md-inline" style="font-weight:500;">$12.500</span>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size:.8rem;">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<body>
+
+<!-- HERO PARA PROMOS FELICES -->
+<section class="hero-section py-5 px-2" 
+    style="background: linear-gradient(120deg, rgba(238,40,91,0.13) 0%, #FFD6E3 60%, #fff 100%);
+           border-radius: 1.3rem 1.3rem 0 0; box-shadow: 0 6px 32px 0 rgba(238,40,91,0.08); margin-bottom: 2.5rem;">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-lg-8 text-center">
+        <img src="https://hobbytoys.com.ar/wp-content/uploads/2024/02/Hobby-Toys-_-emoji-lineal-rojo-e1719435735562.jpg" 
+             alt="Promos felices"
+             class="img-fluid rounded mb-3 animate__animated animate__fadeInDown"
+             style="max-width:110px; background: #fff; box-shadow: 0 2px 14px rgba(238,40,91,0.08); border-radius:2rem;">
+        <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInUp" 
+            style="color:#EE285B; letter-spacing:0.5px; text-shadow: 0 2px 12px #ffb90022;">
+          Promos felices
+        </h1>
+        <p class="lead mb-0 animate__animated animate__fadeIn animate__delay-1s" 
+           style="color:#534fb5; font-weight:500;">
+          ¡Aprovechá nuestras promociones y pagá menos por tus juguetes favoritos!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROMOS Y BENEFICIOS PRINCIPALES -->
+<section class="py-5" style="background: #fff;">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+      <!-- Cuotas sin interés -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 h-100 animate__animated animate__fadeInUp">
+          <div class="card-body text-center">
+            <div class="mb-3">
+              <i class="bi bi-credit-card-2-front" style="font-size:2.2rem; color:#534fb5;"></i>
+            </div>
+            <h2 class="h4 mb-2" style="color:#534fb5;">¡Hasta 6 cuotas sin interés!</h2>
+            <p class="mb-1">Pagando con <strong>Visa</strong> y <strong>Mastercard bancarias</strong>.</p>
+            <p class="mb-2 text-muted" style="font-size:0.98rem;">Solo para compras a través de nuestra web.</p>
+            <span class="badge rounded-pill text-bg-warning text-dark px-3 py-2">Exclusivo online</span>
+          </div>
+        </div>
+      </div>
+      <!-- Provincia Promo -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 h-100 animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="card-body text-center">
+            <img src="https://hobbytoys.com.ar/wp-content/uploads/2020/10/logo_provincia.png" width="100" height="60" alt="Banco Provincia" class="mb-2">
+            <h2 class="h5 mb-2" style="color:#EE285B;">4 cuotas sin interés + 10% reintegro</h2>
+            <p class="mb-1">Con tarjetas Banco Provincia.</p>
+            <span class="badge rounded-pill text-bg-success px-3 py-2 mb-2">¡Sin tope de reintegro!</span>
+            <p class="small text-muted">Promoción válida todos los días hasta el <strong>30/09/2025</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4 justify-content-center mt-4">
+      <!-- Transferencia -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 h-100 animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="card-body text-center">
+            <div class="mb-3">
+              <i class="bi bi-bank" style="font-size:2rem; color:#ffb900;"></i>
+            </div>
+            <h3 class="h5 mb-2" style="color:#ffb900;">Transferencia bancaria</h3>
+            <p>Recibirás los datos bancarios luego de tu compra.<br>
+              <span class="text-muted" style="font-size:0.97rem;">Para retirar o procesar tu envío, el pago debe estar acreditado.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Envíos gratis -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 h-100 animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="card-body text-center">
+            <div class="mb-3">
+              <i class="bi bi-truck" style="font-size:2rem; color:#EE285B;"></i>
+            </div>
+            <h3 class="h5 mb-2" style="color:#EE285B;">¡Envíos gratis!</h3>
+            <ul class="list-unstyled mb-2">
+              <li>
+                <span class="badge rounded-pill text-bg-primary">La Plata y alrededores</span>
+                <span class="d-block mt-1">Compras mayores a <strong>$50.000</strong></span>
+                <span class="text-muted small">Envío dentro de 24-48hs hábiles</span>
+              </li>
+              <li class="mt-3">
+                <span class="badge rounded-pill text-bg-success">Todo el país</span>
+                <span class="d-block mt-1">Compras mayores a <strong>$90.000</strong></span>
+                <span class="text-muted small">¡Te lo enviamos sin cargo!</span>
+              </li>
+            </ul>
+            <a href="/envios" class="btn btn-outline-primary btn-sm mt-2">Ver política de envíos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="alert alert-info text-center mt-3 mb-0" role="alert" style="background:#534fb5;color:white;">
+          <i class="bi bi-gift-fill me-2"></i>
+          <b>¡Consultá otras promos bancarias vigentes en nuestra tienda!</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+
+    <footer id="footer" class="bootscore-footer">
+
+
+    <div class="bootscore-footer-columns">
+        <div class="container">
+            <div class="row">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="col-12 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <img src="https://hobby-toys.com.ar/wp-content/uploads/2025/07/logo-svg.svg" 
+                             class="footer-logo" 
+                             alt="Hobby Toys Logo" 
+                             loading="lazy">
+                    </div>
+                    <div class="widget footer_widget mb-3">
+                        <div class="footer-description">
+                            <p>Creamos momentos mágicos a través de juguetes únicos que inspiran, educan y divierten a niños de todas las edades. Tu tienda de confianza desde hace más de 38 años.</p>
+                        </div>
+                    </div>
+                    <div class="widget footer_widget mb-3">
+                        <div class="social-links">
+                            <a href="#!" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#!" aria-label="Twitter">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="#!" aria-label="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a href="#!" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Links Útiles -->
+                <div class="col-6 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <h2 class="widget-title h5">Links Útiles</h2>
+                        <div class="menu-links-utiles-container">
+                            <ul class="menu">
+                                <li><a href="https://hobby-toys.com.ar/pagina-de-inicio/">Página de inicio</a></li>
+                                <li><a href="https://hobby-toys.com.ar/politica-privacidad/">Política de privacidad</a></li>
+                                <li><a href="https://hobby-toys.com.ar/reembolso_devoluciones/">Política de devoluciones</a></li>
+                                <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                                <li><a href="contacto.html">Contacto</a></li>
+                                <li><a href="envios.html">Información de envíos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Categorías -->
+                <div class="col-6 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <h2 class="widget-title h5">Categorías</h2>
+                        <div class="menu-categorias-container">
+                            <ul class="menu">
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/aire-libre/">AIRE LIBRE</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/arte-y-manualidades/">ARTE Y MANUALIDADES</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/bebes/">BEBÉS</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/bloques-y-ladrillos/">BLOQUES Y LADRILLOS</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/juegos-de-mesa/">JUEGOS DE MESA</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/munecas-munecos-y-accesorios/">MUÑECAS Y MUÑECOS</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/rodados/">RODADOS</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 4: Contacto -->
+                <div class="col-12 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <h2 class="widget-title h5">Contacto</h2>
+                        <div class="textwidget">
+                            <ul class="contact_info">
+                                <li>
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <span>Calle Diversión 123<br>La Plata, Buenos Aires<br>Argentina</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-envelope-fill"></i>
+                                    <a href="mailto:info@hobby-toys.com.ar">info@hobby-toys.com.ar</a>
+                                </li>
+                                <li>
+                                    <i class="bi bi-telephone-fill"></i>
+                                    <span>+54 221 456-7890</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-whatsapp"></i>
+                                    <a href="https://wa.me/5492214567890">WhatsApp: +54 9 221 456-7890</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="bootscore-footer-info">
+        <div class="container">
+            <!-- Menu inferior -->
+            <div class="footer-bottom-menu">
+                <a href="https://hobby-toys.com.ar/pagina-de-inicio/">Inicio</a>
+                <a href="https://hobby-toys.com.ar/politica-privacidad/">Privacidad</a>
+                <a href="https://hobby-toys.com.ar/reembolso_devoluciones/">Devoluciones</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+            <!-- Copyright -->
+            <div class="bootscore-copyright">
+                <span class="cr-symbol">©</span>&nbsp;2025 Hobby Toys - Todos los derechos reservados
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Animaciones -->
+    <script>
+        // Animación de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animación a las tarjetas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.shipping-card, .zone-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

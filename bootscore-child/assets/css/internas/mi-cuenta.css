@@ -1,0 +1,86 @@
+
+    :root {
+      --primary-color: #EE285B;
+      --secondary-color: #534fb5;
+      --accent-color: #ffb900;
+      --light-bg: #f4efe8;
+      --lighter-bg: #fffbe6;
+      --text-dark: #2C3E50;
+    }
+	
+    body { background: #fff; color: var(--text-dark);}
+	
+    .cuenta-header {
+      background: linear-gradient(120deg, var(--light-bg) 60%, var(--lighter-bg) 100%);
+      padding: 3.5rem 0 2.5rem 0;
+      text-align: center;
+      border-bottom-left-radius: 2.5rem;
+      border-bottom-right-radius: 2.5rem;
+      box-shadow: 0 10px 32px 0 rgba(238,40,91,0.06);
+    }
+    .cuenta-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: .5px;
+      margin-bottom: .4rem;
+    }
+    .cuenta-header p {
+      color: var(--secondary-color);
+      font-size: 1.25rem;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+    .cuenta-content {
+      margin-top: -2.5rem;
+      background: #fff;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px 0 rgba(238,40,91,0.07);
+      padding: 2.5rem 2rem 2rem 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cuenta-menu {
+      border-radius: 1rem;
+      background: var(--light-bg);
+      padding: 1.2rem 1.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 12px #EE285B11;
+    }
+    .cuenta-menu a {
+      display: block;
+      color: var(--secondary-color);
+      font-weight: 500;
+      padding: 0.6rem 0.9rem;
+      border-radius: 0.7rem;
+      margin-bottom: 4px;
+      text-decoration: none;
+      transition: background .17s, color .17s;
+    }
+    .cuenta-menu a.active,
+    .cuenta-menu a:hover {
+      background: var(--accent-color);
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+    .cuenta-section-title {
+      color: var(--secondary-color);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 1.3rem;
+      letter-spacing: .5px;
+    }
+    .card-cuenta {
+      border-radius: 1.2rem;
+      background: var(--light-bg);
+      box-shadow: 0 2px 12px #EE285B11;
+      margin-bottom: 1.2rem;
+      padding: 1.3rem 1.1rem;
+    }
+    @media (max-width: 767.98px) {
+      .cuenta-header { padding: 2.5rem 0 1.5rem 0;}
+      .cuenta-title { font-size: 1.65rem;}
+      .cuenta-content { padding: 1.2rem 0.5rem 1rem 0.5rem;}
+      .cuenta-menu { padding: 0.9rem 0.7rem;}
+    }

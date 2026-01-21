@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Envíos - Hobby toys</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="../hts/style.css"/>
+
+    <style>
+        :root {
+            --primary-color: #EE285B;
+            --secondary-color: #534fb5;
+            --accent-color: #ffb900;
+            --light-bg: #f4efe8;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+        }
+
+        .site-header {
+            font-family: 'Fredoka', sans-serif;
+            background: white;
+            box-shadow: 0 2px 20px rgba(238, 40, 91, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #nav-main {
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        .navbar-brand .logo {
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 8px rgba(238, 40, 91, 0.1));
+        }
+
+        .navbar-brand:hover .logo {
+            transform: scale(1.05);
+        }
+
+        /* Mejorar el buscador */
+        .product_search_form {
+            background: var(--light-bg);
+            border-radius: 30px;
+            padding: 8px 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            max-width: 400px;
+            margin: 0 2rem;
+        }
+
+        .product_search_form:focus-within {
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 5px 20px rgba(238, 40, 91, 0.15);
+        }
+
+        .dgwt-wcas-search-input {
+            border: none !important;
+            background: transparent !important;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .dgwt-wcas-search-input::placeholder {
+            color: var(--text-light);
+        }
+
+        .dgwt-wcas-search-submit {
+            background: var(--primary-color) !important;
+            border: none !important;
+            border-radius: 50% !important;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .dgwt-wcas-search-submit:hover {
+            background: var(--secondary-color) !important;
+            transform: scale(1.1);
+        }
+
+        /* Botones de acción mejorados */
+        .header-actions .btn {
+            background: var(--light-bg);
+            border: 2px solid transparent;
+            color: var(--secondary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            position: relative;
+        }
+
+        .header-actions .btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .cart-content-count {
+            background: var(--accent-color) !important;
+            color: var(--text-dark) !important;
+            font-weight: bold;
+            border: 2px solid white;
+            font-size: 0.7rem;
+        }
+
+        .cart-total {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Header inferior mejorado */
+        .bottom_header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)) !important;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .categories_btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .categories_btn:hover {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            border-color: var(--accent-color);
+        }
+
+        .categories_btn i {
+            margin-left: 10px;
+        }
+
+        /* Menú de categorías mejorado */
+        #navCatContent {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        #navCatContent .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            margin-bottom: 5px;
+            text-transform: capitalize;
+        }
+
+        #navCatContent .menu-link:hover {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .menu-cat-thumb {
+            margin-right: 12px !important;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Navegación principal mejorada */
+        .bottom-nav .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .bottom-nav .navbar-nav .nav-link:hover,
+        .bottom-nav .navbar-nav .nav-link.active {
+            background: var(--accent-color);
+            color: var(--text-dark) !important;
+            transform: translateY(-2px);
+        }
+
+        .contact_phone {
+            color: white;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .contact_phone i {
+            color: var(--accent-color);
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Offcanvas mejorado */
+        .offcanvas-header {
+            background: var(--light-bg);
+            border-bottom: 1px solid rgba(238, 40, 91, 0.1);
+        }
+
+        .offcanvas-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .offcanvas-body .menu-link {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--light-bg);
+            display: flex;
+            align-items: center;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .offcanvas-body .menu-link:hover {
+            background: var(--light-bg);
+            color: var(--primary-color);
+        }
+
+        /* Header sticky mejorado */
+        .header-sticky {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(238, 40, 91, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-sticky .navbar-brand .logo {
+            max-width: 100px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product_search_form {
+                margin: 1rem 0;
+                max-width: 100%;
+            }
+
+            .header-actions .btn {
+                width: 45px;
+                height: 45px;
+                margin: 0 3px;
+            }
+
+            .cart-total {
+                display: none !important;
+            }
+
+            .categories_btn span {
+                display: none;
+            }
+
+            .contact_phone span {
+                display: none;
+            }
+        }
+
+        /* Mini cart mejorado */
+        .mini_cart_item {
+            border-left: 3px solid var(--light-bg) !important;
+            transition: all 0.3s ease;
+        }
+
+        .mini_cart_item:hover {
+            border-left-color: var(--primary-color) !important;
+            background: var(--light-bg);
+        }
+
+        .cart-product-title {
+            color: var(--secondary-color) !important;
+            font-weight: 600;
+        }
+
+        .remove_from_cart_button {
+            color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .remove_from_cart_button:hover {
+            color: #dc3545 !important;
+            transform: scale(1.2);
+        }
+
+        .cart-footer {
+            background: var(--light-bg) !important;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .cart-footer .btn-primary {
+            background: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        .cart-footer .btn-primary:hover {
+            background: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+        }
+
+        .cart-footer .btn-secondary {
+            background: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+        }
+
+        .cart-footer .btn-secondary:hover {
+            background: var(--accent-color) !important;
+            border-color: var(--accent-color) !important;
+            color: var(--text-dark) !important;
+        }
+    
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: white;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .shipping-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(238, 40, 91, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(244, 239, 232, 0.5);
+            height: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .shipping-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(238, 40, 91, 0.15);
+        }
+
+        .shipping-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .zone-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 20px rgba(83, 79, 181, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-bg);
+            margin-bottom: 1.5rem;
+        }
+
+        .zone-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(238, 40, 91, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .price-highlight {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .free-shipping {
+            background: var(--secondary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .time-badge {
+            background: var(--light-bg);
+            color: var(--secondary-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .province-list {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid var(--light-bg);
+        }
+
+        .custom-badge {
+            background: rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .bootscore-footer {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, var(--text-dark), var(--secondary-color));
+            color: white;
+        }
+
+        .bootscore-footer-columns {
+            background: transparent !important;
+            padding: 4rem 0 2rem 0 !important;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-title {
+            color: var(--accent-color) !important;
+            font-size: 1.2rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 1.5rem !important;
+            position: relative;
+        }
+
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .footer_widget .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer_widget .menu li {
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer_widget .menu li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer_widget .menu a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer_widget .menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer_widget .menu a::before {
+            content: '▸';
+            color: var(--primary-color);
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(238, 40, 91, 0.3);
+        }
+
+        .contact_info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact_info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .contact_info li i {
+            color: var(--accent-color);
+            margin-right: 12px;
+            margin-top: 3px;
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .contact_info a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact_info a:hover {
+            color: var(--accent-color);
+        }
+
+        .bootscore-footer-info {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 1.5rem 0 !important;
+        }
+
+        .footer-bottom-menu {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-menu a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .bootscore-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .cr-symbol {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .bootscore-footer-columns {
+                padding: 3rem 0 1.5rem 0 !important;
+            }
+
+            .social-links {
+                justify-content: center;
+                margin: 1.5rem 0;
+            }
+
+            .footer-bottom-menu {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+        .categorias-dropdown {
+  min-width: 230px;
+  background: linear-gradient(135deg, #fff 90%, #f4efe8 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 32px 0 rgba(238,40,91,0.07), 0 2px 8px #EE285B11;
+  padding: 0.2rem 0;
+}
+.categorias-dropdown .dropdown-item {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  color: var(--secondary-color);
+  padding: 0.8rem 1.2rem;
+  border-radius: .9rem;
+  margin: 0.15rem 0.4rem;
+  transition: background 0.16s, color 0.16s, font-weight 0.16s;
+}
+.categorias-dropdown .dropdown-item:hover,
+.categorias-dropdown .dropdown-item:focus {
+  background: linear-gradient(90deg, #fff, #ffb90022 90%);
+  color: var(--primary-color) !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px #ffb90022;
+}
+
+.sticky-header {
+  transition: top 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 18px 0 rgba(83,79,181,0.07);
+}
+.sticky-header .navbar-brand img { max-height: 48px; }
+.categorias-dropdown { /* Reusa estilos personalizados previos */ }
+@media (max-width: 991px) {
+  .sticky-header .nav, .sticky-header nav { flex-wrap: wrap; }
+  .sticky-header .navbar-brand img { max-height: 38px; }
+}
+
+   :root {
+      --primary-color: #EE285B;
+      --secondary-color: #534fb5;
+      --accent-color: #ffb900;
+      --light-bg: #f4efe8;
+    }
+    .categorias-dropdown {
+      min-width: 230px;
+      background: linear-gradient(135deg, #fff 90%, #f4efe8 100%);
+      border-radius: 1.2rem;
+      box-shadow: 0 8px 32px 0 rgba(238,40,91,0.07), 0 2px 8px #EE285B11;
+      padding: 0.2rem 0;
+    }
+    .categorias-dropdown .dropdown-item {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 500;
+      color: var(--secondary-color);
+      padding: 0.8rem 1.2rem;
+      border-radius: .9rem;
+      margin: 0.15rem 0.4rem;
+      transition: background 0.16s, color 0.16s, font-weight 0.16s;
+    }
+    .categorias-dropdown .dropdown-item:hover,
+    .categorias-dropdown .dropdown-item:focus {
+      background: linear-gradient(90deg, #fff, #ffb90022 90%);
+      color: var(--primary-color) !important;
+      font-weight: 700;
+      box-shadow: 0 2px 8px #ffb90022;
+    }
+    .main_menu_uppercase .nav-link { text-transform: uppercase; }
+    /* Slide 1 - rosa/azul (igual a tu hero original) */
+.hero-section .hero-slide-1 {
+  background: linear-gradient(135deg, #EE285B, #534fb5);
+  color: #fff;
+}
+/* Slide 2 - violeta/amarillo brillante */
+.hero-section .hero-slide-2 {
+  background: linear-gradient(135deg, #A259F7, #FFD600);
+  color: #302757;
+}
+/* Slide 3 - turquesa/rojo */
+.hero-section .hero-slide-3 {
+  background: linear-gradient(135deg, #06D6A0, #FE5F55);
+  color: #fff;
+}
+.hero-section .carousel-item {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+}
+.hero-section .display-4, .hero-section h4, .hero-section h1 {
+  color: inherit;
+}
+
+.hero-section .carousel-item {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+}
+.hero-section .hero-slide-1 {
+  background: linear-gradient(135deg, #EE285B, #534fb5);
+  color: #fff;
+}
+.hero-section .hero-slide-2 {
+  background: linear-gradient(135deg, #A259F7, #FFD600);
+  color: #302757;
+}
+.hero-section .hero-slide-3 {
+  background: linear-gradient(135deg, #06D6A0, #FE5F55);
+  color: #fff;
+}
+.hero-section .display-4, .hero-section h4, .hero-section h1 {
+  color: inherit;
+}
+.categorias-dropdown {
+  min-width: 200px;
+  background: linear-gradient(135deg, #fff 90%, #f4efe8 100%);
+  border-radius: 1rem;
+}
+.categorias-dropdown .dropdown-item {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  color: #534fb5;
+  padding: 0.7rem 1.2rem;
+  border-radius: .8rem;
+  transition: background 0.16s, color 0.16s;
+}
+.categorias-dropdown .dropdown-item:hover,
+.categorias-dropdown .dropdown-item:focus {
+  background: linear-gradient(90deg, #fff, #ffb90022 90%);
+  color: #EE285B !important;
+  font-weight: 700;
+}
+
+
+.categorias-dropdown {
+  min-width: 200px;
+  background: linear-gradient(135deg, #fff 90%, #f4efe8 100%);
+  border-radius: 1rem;
+}
+.categorias-dropdown .dropdown-item {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  color: #534fb5;
+  padding: 0.7rem 1.2rem;
+  border-radius: .8rem;
+  transition: background 0.16s, color 0.16s;
+}
+.categorias-dropdown .dropdown-item:hover,
+.categorias-dropdown .dropdown-item:focus {
+  background: linear-gradient(90deg, #fff, #ffb90022 90%);
+  color: #EE285B !important;
+  font-weight: 700;
+}
+@media (max-width: 991.98px) {
+  #mainNavMenu .navbar-nav {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  #mainNavMenu .nav-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: 1.2rem;
+    margin-bottom: 0.3rem;
+    background: var(--light-bg);
+    color: var(--secondary-color) !important;
+    font-size: 1.1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  #mainNavMenu .nav-link:hover,
+  #mainNavMenu .nav-link.active {
+    background: var(--primary-color);
+    color: #fff !important;
+  }
+}
+.product-card {
+  border-radius: 1.2rem !important;
+  transition: box-shadow .24s, transform .22s;
+  background: #fff;
+}
+.product-card:hover {
+  box-shadow: 0 18px 40px 0 rgba(238,40,91,.13);
+  transform: translateY(-5px) scale(1.025);
+}
+.product-card img {
+  border-radius: 1.2rem 1.2rem 0 0;
+  background: #fff;
+}
+.btn-custom {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2rem;
+}
+.btn-custom:hover {
+  background: var(--secondary-color);
+}
+</style>
+</head>
+<!-- HEADER PRINCIPAL -->
+<header id="main-header" class="site-header shadow-sm">
+  <nav class="navbar navbar-expand-lg bg-white">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://hobby-toys.com.ar/wp-content/themes/bootscore-child/assets/images/logo-svg.svg" alt="Hobby toys Logo" style="height:44px;max-width:140px;">
+      </a>
+      <!-- Botón Categorías (Dropdown Desktop, Offcanvas Mobile) -->
+      <div class="d-flex align-items-center">
+        <!-- Mobile: Offcanvas -->
+        <button class="btn btn-primary d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategorias" aria-controls="offcanvasCategorias">
+          <i class="bi bi-list"></i> Categorías
+        </button>
+        <!-- Desktop: Dropdown -->
+        <div class="dropdown d-none d-lg-block">
+          <button class="btn fw-bold px-3" type="button" id="dropdownCategorias" data-bs-toggle="dropdown" aria-expanded="false"
+            style="background: var(--light-bg); color: var(--primary-color); border-radius: 2rem;">
+            Categorías <i class="bi bi-chevron-down ms-1"></i>
+          </button>
+          <ul class="dropdown-menu categorias-dropdown shadow border-0 mt-2" aria-labelledby="dropdownCategorias">
+            <li><a class="dropdown-item" href="#">Aire Libre</a></li>
+            <li><a class="dropdown-item" href="#">Bloques y Ladrillos</a></li>
+            <li><a class="dropdown-item" href="#">Juegos de Mesa</a></li>
+            <li><a class="dropdown-item" href="#">Didácticos</a></li>
+            <li><a class="dropdown-item" href="#">Muñecas</a></li>
+            <li><a class="dropdown-item" href="#">Rodados</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Buscador -->
+      <form class="d-none d-md-flex mx-3 flex-grow-1" style="max-width:400px;" role="search">
+        <input class="form-control rounded-pill me-2" type="search" placeholder="¿Qué juguete buscas hoy?" aria-label="Buscar">
+        <button class="btn btn-outline-primary rounded-pill" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      <!-- Toggler para móviles -->
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavMenu" aria-controls="mainNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Menú principal responsive -->
+      <div class="collapse navbar-collapse" id="mainNavMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 w-100 justify-content-lg-end align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Envíos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Promociones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold py-2 px-3 text-center" href="#">Contacto</a>
+          </li>
+          <!-- Acciones: login y carrito en mobile -->
+          <li class="nav-item d-lg-none text-center mt-2">
+            <a href="#" class="btn btn-outline-primary rounded-circle me-2" aria-label="Iniciar sesión">
+              <i class="bi bi-person fs-5"></i>
+            </a>
+            <a href="#" class="btn btn-outline-primary rounded-pill d-inline-flex align-items-center position-relative" style="min-width:70px;">
+              <i class="bi bi-cart3 fs-5"></i>
+              <span class="ms-2" style="font-weight:500;">$12.500</span>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size:.8rem;">3</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Acciones: Login y Carrito (desktop) -->
+      <div class="d-none d-lg-flex align-items-center ms-1">
+        <a href="#" class="btn btn-outline-primary rounded-circle me-2" aria-label="Iniciar sesión">
+          <i class="bi bi-person fs-5"></i>
+        </a>
+        <a href="#" class="btn btn-outline-primary rounded-pill d-flex align-items-center position-relative" style="min-width:70px;">
+          <i class="bi bi-cart3 fs-5"></i>
+          <span class="ms-2 d-none d-md-inline" style="font-weight:500;">$12.500</span>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size:.8rem;">3</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- Offcanvas Categorías Mobile -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCategorias" aria-labelledby="offcanvasCategoriasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasCategoriasLabel">Categorías</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled">
+        <li><a href="#" class="d-block py-2 text-decoration-none">Aire Libre</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Bloques y Ladrillos</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Juegos de Mesa</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Didácticos</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Muñecas</a></li>
+        <li><a href="#" class="d-block py-2 text-decoration-none">Rodados</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- HEADER STICKY (compacto al hacer scroll) -->
+<header id="sticky-header" class="site-header sticky-header shadow-sm py-2 bg-white" style="display:none; position:fixed; top:0; left:0; width:100%; z-index:1030;">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="https://hobby-toys.com.ar/wp-content/themes/bootscore-child/assets/images/logo-svg.svg" alt="Hobby toys Logo" style="height:38px;max-width:120px;">
+    </a>
+    <div class="dropdown d-none d-lg-block me-2">
+      <button class="btn fw-bold px-3" type="button" id="dropdownCategoriasSticky" data-bs-toggle="dropdown" aria-expanded="false"
+        style="background: var(--light-bg); color: var(--primary-color); border-radius: 2rem;">
+        Categorías <i class="bi bi-chevron-down ms-1"></i>
+      </button>
+      <ul class="dropdown-menu categorias-dropdown shadow border-0 mt-2" aria-labelledby="dropdownCategoriasSticky">
+        <li><a class="dropdown-item" href="#">Aire Libre</a></li>
+        <li><a class="dropdown-item" href="#">Bloques y Ladrillos</a></li>
+        <li><a class="dropdown-item" href="#">Juegos de Mesa</a></li>
+        <li><a class="dropdown-item" href="#">Didácticos</a></li>
+        <li><a class="dropdown-item" href="#">Muñecas</a></li>
+        <li><a class="dropdown-item" href="#">Rodados</a></li>
+      </ul>
+    </div>
+    <form class="d-none d-md-flex mx-2 flex-grow-1" style="max-width:350px;" role="search">
+      <input class="form-control rounded-pill me-2" type="search" placeholder="¿Qué juguete buscas hoy?" aria-label="Buscar">
+      <button class="btn btn-outline-primary rounded-pill" type="submit"><i class="bi bi-search"></i></button>
+    </form>
+    <ul class="nav mb-0 align-items-center gap-2 ms-2 d-none d-lg-flex">
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Nosotros</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Envíos</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Promociones</a></li>
+      <li class="nav-item"><a class="nav-link fw-semibold" href="#">Contacto</a></li>
+    </ul>
+    <div class="d-flex align-items-center ms-2">
+      <a href="#" class="btn btn-outline-primary rounded-circle me-2" aria-label="Iniciar sesión">
+        <i class="bi bi-person fs-5"></i>
+      </a>
+      <a href="#" class="btn btn-outline-primary rounded-pill d-flex align-items-center position-relative" style="min-width:70px;">
+        <i class="bi bi-cart3 fs-5"></i>
+        <span class="ms-2 d-none d-md-inline" style="font-weight:500;">$12.500</span>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size:.8rem;">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<body>
+<!-- HEADER (puedes pegar aquí tu header real) -->
+
+<div class="container py-4">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+      <li class="breadcrumb-item"><a href="#">Construcción</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Bloques Creativos</li>
+    </ol>
+  </nav>
+  <div class="row g-4">
+    <!-- Galería de imágenes -->
+    <div class="col-lg-5">
+      <div class="product-gallery shadow-sm mb-3">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="main-img img-fluid mb-3" id="mainImg" alt="Bloques Creativos">
+        <div>
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="thumb-img active" alt="" onclick="changeImg(this)">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="thumb-img" alt="" onclick="changeImg(this)">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80" class="thumb-img" alt="" onclick="changeImg(this)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Info producto -->
+    <div class="col-lg-7">
+      <span class="badge badge-offer mb-2"><i class="bi bi-star-fill me-1"></i>Oferta</span>
+      <span class="badge badge-stock ms-1 mb-2"><i class="bi bi-check-circle me-1"></i>En stock</span>
+      <h1 class="product-title mb-2">Bloques Creativos</h1>
+      <div class="product-rating mb-2">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+        <span class="ms-2 small text-muted">(45 opiniones)</span>
+      </div>
+      <div class="mb-2">
+        <span class="product-old-price me-2">$3.100</span>
+        <span class="product-price">$2.790</span>
+      </div>
+      <div class="mb-3">
+        <strong>Categoría:</strong> <a href="#" style="color:var(--secondary-color);">Construcción</a>
+        <span class="mx-2">|</span>
+        <strong>Código:</strong> #1234
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <div class="input-group" style="width:110px;">
+          <button class="btn btn-outline-primary btn-sm" type="button"><i class="bi bi-dash"></i></button>
+          <input type="text" class="form-control text-center" value="1">
+          <button class="btn btn-outline-primary btn-sm" type="button"><i class="bi bi-plus"></i></button>
+        </div>
+        <button class="btn btn-custom btn-lg rounded-pill px-4 ms-3"><i class="bi bi-cart-plus me-1"></i>Agregar al carrito</button>
+        <button class="btn btn-outline-secondary rounded-circle ms-2" title="Agregar a favoritos"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-outline-primary btn-sm rounded-pill me-1" title="Compartir por WhatsApp"><i class="bi bi-whatsapp"></i></button>
+        <button class="btn btn-outline-primary btn-sm rounded-pill me-1" title="Compartir por Facebook"><i class="bi bi-facebook"></i></button>
+        <button class="btn btn-outline-primary btn-sm rounded-pill" title="Copiar link"><i class="bi bi-link-45deg"></i></button>
+      </div>
+      <ul class="feature-list mb-3">
+        <li><i class="bi bi-check-circle-fill text-success me-1"></i>Apto desde 3 años</li>
+        <li><i class="bi bi-check-circle-fill text-success me-1"></i>Material: Plástico seguro y resistente</li>
+        <li><i class="bi bi-check-circle-fill text-success me-1"></i>Incluye instrucciones ilustradas</li>
+      </ul>
+      <div class="small text-muted mb-1"><i class="bi bi-shield-check me-1"></i>Garantía de satisfacción 100% | <i class="bi bi-truck me-1"></i>Envíos a todo el país</div>
+    </div>
+  </div>
+
+  <!-- Tabs de descripción, ficha técnica, políticas, reseñas, preguntas -->
+  <div class="row mt-5">
+    <div class="col-lg-8 mx-auto">
+      <ul class="nav nav-tabs product-tabs justify-content-center" id="productTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button" role="tab">Descripción</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="ficha-tab" data-bs-toggle="tab" data-bs-target="#ficha" type="button" role="tab">Ficha técnica</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="envio-tab" data-bs-toggle="tab" data-bs-target="#envio" type="button" role="tab">Envíos y devoluciones</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="opiniones-tab" data-bs-toggle="tab" data-bs-target="#opiniones" type="button" role="tab">Opiniones</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab">Preguntas</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="productTabContent">
+        <!-- Descripción -->
+        <div class="tab-pane fade show active" id="desc" role="tabpanel">
+          <p class="mb-0">¡Dejá volar la imaginación! Los Bloques Creativos son ideales para estimular la creatividad, el aprendizaje y la coordinación. Incluye piezas de diferentes colores y formas para construir infinitas figuras.</p>
+        </div>
+        <!-- Ficha técnica -->
+        <div class="tab-pane fade" id="ficha" role="tabpanel">
+          <ul class="mb-2">
+            <li><b>Edad recomendada:</b> Desde 3 años</li>
+            <li><b>Contenido:</b> 80 bloques variados</li>
+            <li><b>Material:</b> Plástico ABS libre de BPA</li>
+            <li><b>Medidas caja:</b> 35x25x10 cm</li>
+            <li><b>Marca:</b> Rasti</li>
+            <li><b>Origen:</b> Argentina</li>
+          </ul>
+        </div>
+        <!-- Envíos y devoluciones -->
+        <div class="tab-pane fade" id="envio" role="tabpanel">
+          <ul>
+            <li><b>Envíos a todo el país:</b> Correo Argentino, OCA y transporte propio en La Plata.</li>
+            <li><b>Retiro en sucursal:</b> Sin cargo, coordinando día y horario.</li>
+            <li><b>Devoluciones:</b> Hasta 15 días, sin costo si el producto tiene falla.</li>
+            <li><b>Atención personalizada:</b> <a href="https://wa.me/5492214567890" target="_blank" style="color:var(--primary-color);">Chateá con nosotros</a></li>
+          </ul>
+        </div>
+        <!-- Opiniones -->
+        <div class="tab-pane fade" id="opiniones" role="tabpanel">
+          <div class="mb-3">
+            <div class="review-box mb-3">
+              <div class="d-flex align-items-center mb-1">
+                <span class="fw-bold me-2">María G.</span>
+                <span class="review-rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                </span>
+                <span class="small text-muted ms-2">21/07/2024</span>
+              </div>
+              <div>¡A mi hijo le encantaron! Son resistentes y muy coloridos.</div>
+            </div>
+            <div class="review-box mb-3">
+              <div class="d-flex align-items-center mb-1">
+                <span class="fw-bold me-2">Lucas P.</span>
+                <span class="review-rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                </span>
+                <span class="small text-muted ms-2">18/07/2024</span>
+              </div>
+              <div>Muy buen producto, llegó rápido y excelente atención.</div>
+            </div>
+          </div>
+          <form>
+            <div class="mb-2 fw-bold" style="color:var(--primary-color);">¡Dejá tu opinión!</div>
+            <div class="mb-2">
+              <label class="form-label">Calificación</label>
+              <select class="form-select w-auto d-inline-block">
+                <option>5 ⭐⭐⭐⭐⭐</option>
+                <option>4 ⭐⭐⭐⭐</option>
+                <option>3 ⭐⭐⭐</option>
+                <option>2 ⭐⭐</option>
+                <option>1 ⭐</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Comentario</label>
+              <textarea class="form-control" rows="2" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-custom btn-sm rounded-pill mt-1">Enviar opinión</button>
+          </form>
+        </div>
+        <!-- Preguntas frecuentes -->
+        <div class="tab-pane fade" id="faq" role="tabpanel">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item mb-3 rounded-4 shadow-sm border-0">
+              <h2 class="accordion-header" id="faq1">
+                <button class="accordion-button rounded-4 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                  ¿Es seguro para bebés?
+                </button>
+              </h2>
+              <div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">El producto es apto desde 3 años. No contiene piezas pequeñas peligrosas.</div>
+              </div>
+            </div>
+            <div class="accordion-item mb-3 rounded-4 shadow-sm border-0">
+              <h2 class="accordion-header" id="faq2">
+                <button class="accordion-button collapsed rounded-4 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                  ¿Cuánto tarda el envío?
+                </button>
+              </h2>
+              <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">En La Plata 24-48hs. Resto del país, 3 a 7 días hábiles según la zona.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Productos relacionados -->
+  <div class="py-5">
+    <h3 class="related-title mb-4"><i class="bi bi-box2-heart me-2"></i>Productos relacionados</h3>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card border-0 shadow-sm text-center h-100">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="card-img-top p-3 pb-0" alt="Bloques Maxi" style="max-height:160px;object-fit:contain;">
+            <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2" style="font-size:.85rem;">-15%</span>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold mb-1" style="color:var(--secondary-color);">Bloques Maxi</h6>
+            <span class="badge bg-light text-dark mb-2">Construcción</span>
+            <div class="mb-2">
+              <span class="text-muted text-decoration-line-through me-1">$5.000</span>
+              <span class="product-price fw-bold" style="font-size:1.2rem;color:var(--primary-color);">$4.000</span>
+            </div>
+            <button class="btn btn-custom btn-sm rounded-pill px-4 mt-auto"><i class="bi bi-cart-plus me-1"></i>Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card border-0 shadow-sm text-center h-100">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&q=80" class="card-img-top p-3 pb-0" alt="Set Construcción" style="max-height:160px;object-fit:contain;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold mb-1" style="color:var(--secondary-color);">Set Construcción</h6>
+            <span class="badge bg-light text-dark mb-2">Construcción</span>
+            <div class="mb-2">
+              <span class="product-price fw-bold" style="font-size:1.2rem;color:var(--primary-color);">$3.230</span>
+            </div>
+            <button class="btn btn-custom btn-sm rounded-pill px-4 mt-auto"><i class="bi bi-cart-plus me-1"></i>Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card border-0 shadow-sm text-center h-100">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80" class="card-img-top p-3 pb-0" alt="Muñeca Fashion" style="max-height:160px;object-fit:contain;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold mb-1" style="color:var(--secondary-color);">Muñeca Fashion</h6>
+            <span class="badge bg-light text-dark mb-2">Muñecas</span>
+            <div class="mb-2">
+              <span class="product-price fw-bold" style="font-size:1.2rem;color:var(--primary-color);">$3.100</span>
+            </div>
+            <button class="btn btn-custom btn-sm rounded-pill px-4 mt-auto"><i class="bi bi-cart-plus me-1"></i>Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card border-0 shadow-sm text-center h-100">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1558877385-8c0c4e87cd4a?auto=format&fit=crop&w=400&q=80" class="card-img-top p-3 pb-0" alt="Vehículo de Bomberos" style="max-height:160px;object-fit:contain;">
+            <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2" style="font-size:.85rem;">Oferta</span>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold mb-1" style="color:var(--secondary-color);">Vehículo de Bomberos</h6>
+            <span class="badge bg-light text-dark mb-2">Vehículos</span>
+            <div class="mb-2">
+              <span class="text-muted text-decoration-line-through me-1">$5.200</span>
+              <span class="product-price fw-bold" style="font-size:1.2rem;color:var(--primary-color);">$4.800</span>
+            </div>
+            <button class="btn btn-custom btn-sm rounded-pill px-4 mt-auto"><i class="bi bi-cart-plus me-1"></i>Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- Cierre del container principal -->
+
+<div id="productGalleryCarousel" class="carousel slide product-gallery shadow-sm mb-3" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="d-block w-100 main-img img-fluid" alt="Imagen 1">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="d-block w-100 main-img img-fluid" alt="Imagen 2">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80" class="d-block w-100 main-img img-fluid" alt="Imagen 3">
+    </div>
+  </div>
+  <!-- Controles -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#productGalleryCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#productGalleryCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+  <!-- Indicadores -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#productGalleryCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#productGalleryCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#productGalleryCarousel" data-bs-slide-to="2"></button>
+  </div>
+</div>
+
+<!-- FOOTER (puedes pegar aquí tu footer real) -->
+   <footer id="footer" class="bootscore-footer">
+
+
+    <div class="bootscore-footer-columns">
+        <div class="container">
+            <div class="row">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="col-12 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <img src="https://hobby-toys.com.ar/wp-content/uploads/2025/07/logo-svg.svg" 
+                             class="footer-logo" 
+                             alt="Hobby Toys Logo" 
+                             loading="lazy">
+                    </div>
+                    <div class="widget footer_widget mb-3">
+                        <div class="footer-description">
+                            <p>Creamos momentos mágicos a través de juguetes únicos que inspiran, educan y divierten a niños de todas las edades. Tu tienda de confianza desde hace más de 38 años.</p>
+                        </div>
+                    </div>
+                    <div class="widget footer_widget mb-3">
+                        <div class="social-links">
+                            <a href="#!" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#!" aria-label="Twitter">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="#!" aria-label="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a href="#!" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Links Útiles -->
+                <div class="col-6 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <h2 class="widget-title h5">Links Útiles</h2>
+                        <div class="menu-links-utiles-container">
+                            <ul class="menu">
+                                <li><a href="https://hobby-toys.com.ar/pagina-de-inicio/">Página de inicio</a></li>
+                                <li><a href="https://hobby-toys.com.ar/politica-privacidad/">Política de privacidad</a></li>
+                                <li><a href="https://hobby-toys.com.ar/reembolso_devoluciones/">Política de devoluciones</a></li>
+                                <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                                <li><a href="contacto.html">Contacto</a></li>
+                                <li><a href="envios.html">Información de envíos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Categorías -->
+                <div class="col-6 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <h2 class="widget-title h5">Categorías</h2>
+                        <div class="menu-categorias-container">
+                            <ul class="menu">
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/aire-libre/">AIRE LIBRE</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/arte-y-manualidades/">ARTE Y MANUALIDADES</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/bebes/">BEBÉS</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/bloques-y-ladrillos/">BLOQUES Y LADRILLOS</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/juegos-de-mesa/">JUEGOS DE MESA</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/munecas-munecos-y-accesorios/">MUÑECAS Y MUÑECOS</a></li>
+                                <li><a href="https://hobby-toys.com.ar/producto-categoria/jugueteria/rodados/">RODADOS</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 4: Contacto -->
+                <div class="col-12 col-lg-3 mb-4">
+                    <div class="widget footer_widget mb-3">
+                        <h2 class="widget-title h5">Contacto</h2>
+                        <div class="textwidget">
+                            <ul class="contact_info">
+                                <li>
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <span>Calle Diversión 123<br>La Plata, Buenos Aires<br>Argentina</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-envelope-fill"></i>
+                                    <a href="mailto:info@hobby-toys.com.ar">info@hobby-toys.com.ar</a>
+                                </li>
+                                <li>
+                                    <i class="bi bi-telephone-fill"></i>
+                                    <span>+54 221 456-7890</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-whatsapp"></i>
+                                    <a href="https://wa.me/5492214567890">WhatsApp: +54 9 221 456-7890</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="bootscore-footer-info">
+        <div class="container">
+            <!-- Menu inferior -->
+            <div class="footer-bottom-menu">
+                <a href="https://hobby-toys.com.ar/pagina-de-inicio/">Inicio</a>
+                <a href="https://hobby-toys.com.ar/politica-privacidad/">Privacidad</a>
+                <a href="https://hobby-toys.com.ar/reembolso_devoluciones/">Devoluciones</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+            <!-- Copyright -->
+            <div class="bootscore-copyright">
+                <span class="cr-symbol">©</span>&nbsp;2025 Hobby Toys - Todos los derechos reservados
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- JS para la galería de imágenes -->
+<script>
+function changeImg(img) {
+  document.getElementById('mainImg').src = img.src;
+  // Quitar clase activa de todas las miniaturas
+  document.querySelectorAll('.thumb-img').forEach(function(el) { el.classList.remove('active'); });
+  // Agregar clase activa a la seleccionada
+  img.classList.add('active');
+}
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

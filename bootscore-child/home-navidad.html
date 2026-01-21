@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HobbyToys - Navidad & Reyes Magos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --christmas-red: #C41E3A;
+            --christmas-green: #165B33;
+            --christmas-gold: #FFD700;
+            --christmas-white: #FFFAFA;
+            --christmas-dark: #1a472a;
+            --reyes-purple: #6B238E;
+            --reyes-gold: #D4AF37;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           HERO SLIDER NAVIDEÑO
+        ======================================== */
+        .christmas-hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .christmas-hero .swiper-slide {
+            height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slide-christmas-1 {
+            background: linear-gradient(135deg, var(--christmas-red) 0%, var(--christmas-dark) 100%);
+        }
+
+        .hero-slide-christmas-2 {
+            background: linear-gradient(135deg, var(--christmas-green) 0%, #2d5a3d 100%);
+        }
+
+        .hero-slide-christmas-3 {
+            background: linear-gradient(135deg, #8B0000 0%, var(--christmas-red) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            text-align: left;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 .christmas-icon {
+            color: var(--christmas-gold);
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-content h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-content .discount-badge {
+            background: var(--christmas-gold);
+            color: var(--christmas-dark);
+            font-size: 2.5rem;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        .hero-btn {
+            background: white;
+            color: var(--christmas-red);
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: var(--christmas-gold);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-image img {
+            max-height: 450px;
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Efecto de nieve */
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: 110%;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Decoraciones navideñas */
+        .christmas-decoration {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .decoration-ball {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--christmas-gold);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        /* ========================================
+           CARRUSELES NAVIDEÑOS
+        ======================================== */
+        .christmas-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-christmas-gifts {
+            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+            position: relative;
+        }
+
+        .section-christmas-toys {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+        }
+
+        .section-christmas-deals {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+
+        .section-reyes-magos {
+            background: linear-gradient(135deg, var(--reyes-purple) 0%, #4A148C 100%);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--christmas-red);
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::before,
+        .section-title h2::after {
+            content: '❄';
+            position: absolute;
+            font-size: 2rem;
+            color: var(--christmas-gold);
+            animation: pulse 2s infinite;
+        }
+
+        .section-title h2::before {
+            left: -60px;
+            top: 0;
+        }
+
+        .section-title h2::after {
+            right: -60px;
+            top: 0;
+        }
+
+        .section-reyes-magos .section-title h2 {
+            color: var(--reyes-gold);
+        }
+
+        .section-reyes-magos .section-title h2::before,
+        .section-reyes-magos .section-title h2::after {
+            content: '👑';
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .section-reyes-magos .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Cards de productos */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--christmas-red);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 5;
+            box-shadow: 0 3px 10px rgba(196, 30, 58, 0.3);
+        }
+
+        .product-badge.new {
+            background: var(--christmas-green);
+        }
+
+        .product-badge.gift {
+            background: var(--christmas-gold);
+            color: var(--christmas-dark);
+        }
+
+        .product-image-container {
+            position: relative;
+            margin-bottom: 20px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #f8f9fa;
+        }
+
+        .product-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image-container img {
+            transform: scale(1.1);
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--christmas-red);
+            margin-bottom: 15px;
+        }
+
+        .product-price .old-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        .product-btn {
+            background: var(--christmas-green);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .product-btn:hover {
+            background: var(--christmas-dark);
+            transform: scale(1.05);
+        }
+
+        .section-reyes-magos .product-card {
+            border: 2px solid var(--reyes-gold);
+            background: rgba(255,255,255,0.95);
+        }
+
+        .section-reyes-magos .product-btn {
+            background: var(--reyes-purple);
+        }
+
+        .section-reyes-magos .product-btn:hover {
+            background: #4A148C;
+        }
+
+        /* Countdown Timer */
+        .countdown-timer {
+            text-align: center;
+            margin: 30px 0;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .countdown-timer h3 {
+            color: var(--christmas-red);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .countdown-timer .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: var(--christmas-green);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 100px;
+            box-shadow: 0 5px 15px rgba(22, 91, 51, 0.3);
+        }
+
+        .countdown-item .number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .countdown-item .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        /* Luces navideñas */
+        .christmas-lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 10;
+        }
+
+        .light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        .light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
+        .light:nth-child(2) { background: #00ff00; animation-delay: 0.3s; }
+        .light:nth-child(3) { background: #0000ff; animation-delay: 0.6s; }
+        .light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
+        .light:nth-child(5) { background: #ff00ff; animation-delay: 1.2s; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; box-shadow: 0 0 10px currentColor; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Navegación Swiper */
+        .swiper-button-next,
+        .swiper-button-prev {
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 20px;
+            color: var(--christmas-red);
+            font-weight: bold;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: var(--christmas-gold);
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--christmas-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .hero-content .discount-badge {
+                font-size: 1.5rem;
+                padding: 10px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .countdown-item .number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animaciones adicionales */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========================================
+     HERO SLIDER NAVIDEÑO
+======================================== -->
+<section class="christmas-hero">
+    <div class="swiper hero-swiper">
+        <div class="swiper-wrapper">
+
+            <!-- Slide 1: Regalos de Navidad -->
+            <div class="swiper-slide hero-slide-christmas-1">
+                <!-- Efecto de nieve -->
+                <div class="snowflakes" aria-hidden="true">
+                    <div class="snowflake" style="left: 10%; animation-duration: 10s;">❅</div>
+                    <div class="snowflake" style="left: 20%; animation-duration: 8s; animation-delay: 1s;">❆</div>
+                    <div class="snowflake" style="left: 30%; animation-duration: 12s; animation-delay: 0.5s;">❅</div>
+                    <div class="snowflake" style="left: 40%; animation-duration: 9s;">❆</div>
+                    <div class="snowflake" style="left: 50%; animation-duration: 11s; animation-delay: 2s;">❅</div>
+                    <div class="snowflake" style="left: 60%; animation-duration: 10s; animation-delay: 1.5s;">❆</div>
+                    <div class="snowflake" style="left: 70%; animation-duration: 8s;">❅</div>
+                    <div class="snowflake" style="left: 80%; animation-duration: 12s; animation-delay: 0.8s;">❆</div>
+                    <div class="snowflake" style="left: 90%; animation-duration: 9s; animation-delay: 1.2s;">❅</div>
+                </div>
+
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-lg-6 hero-content">
+                            <h1 class="animate__animated animate__fadeInLeft">
+                                <span class="christmas-icon">🎄</span> Navidad Mágica
+                            </h1>
+                            <h3 class="animate__animated animate__fadeInLeft animate__delay-1s">
+                                Los mejores regalos para toda la familia
+                            </h3>
+                            <div class="discount-badge animate__animated animate__zoomIn animate__delay-2s">
+                                Hasta 50% OFF
+                            </div>
+                            <br>
+                            <a href="#" class="hero-btn animate__animated animate__fadeInUp animate__delay-3s">
+                                <i class="fas fa-gift"></i> Ver Ofertas
+                            </a>
+                        </div>
+                        <div class="col-lg-6 hero-image text-center">
+                            <img src="https://via.placeholder.com/500x450/C41E3A/FFFFFF?text=Regalos+Navidad"
+                                 alt="Regalos de Navidad"
+                                 class="animate__animated animate__fadeInRight animate__delay-1s">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decoraciones -->
+                <div class="christmas-decoration decoration-ball" style="top: 10%; left: 10%;"></div>
+                <div class="christmas-decoration decoration-ball" style="bottom: 15%; right: 10%; background: var(--christmas-red);"></div>
+            </div>
+
+            <!-- Slide 2: Juguetes Navideños -->
+            <div class="swiper-slide hero-slide-christmas-2">
+                <div class="snowflakes" aria-hidden="true">
+                    <div class="snowflake" style="left: 15%; animation-duration: 11s;">❅</div>
+                    <div class="snowflake" style="left: 25%; animation-duration: 9s; animation-delay: 0.7s;">❆</div>
+                    <div class="snowflake" style="left: 35%; animation-duration: 10s; animation-delay: 1.3s;">❅</div>
+                    <div class="snowflake" style="left: 45%; animation-duration: 12s;">❆</div>
+                    <div class="snowflake" style="left: 55%; animation-duration: 8s; animation-delay: 1.8s;">❅</div>
+                    <div class="snowflake" style="left: 65%; animation-duration: 11s; animation-delay: 0.3s;">❆</div>
+                    <div class="snowflake" style="left: 75%; animation-duration: 9s; animation-delay: 2.1s;">❅</div>
+                    <div class="snowflake" style="left: 85%; animation-duration: 10s;">❆</div>
+                </div>
+
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-lg-6 hero-content">
+                            <h1 class="animate__animated animate__fadeInLeft">
+                                <span class="christmas-icon">🎁</span> Juguetes Increíbles
+                            </h1>
+                            <h3 class="animate__animated animate__fadeInLeft animate__delay-1s">
+                                Haz realidad los sueños de los más pequeños
+                            </h3>
+                            <div class="discount-badge animate__animated animate__zoomIn animate__delay-2s">
+                                Envío Gratis
+                            </div>
+                            <br>
+                            <a href="#" class="hero-btn animate__animated animate__fadeInUp animate__delay-3s">
+                                <i class="fas fa-star"></i> Descubrir
+                            </a>
+                        </div>
+                        <div class="col-lg-6 hero-image text-center">
+                            <img src="https://via.placeholder.com/500x450/165B33/FFFFFF?text=Juguetes+Premium"
+                                 alt="Juguetes Navideños"
+                                 class="animate__animated animate__fadeInRight animate__delay-1s">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Ofertas Especiales -->
+            <div class="swiper-slide hero-slide-christmas-3">
+                <div class="snowflakes" aria-hidden="true">
+                    <div class="snowflake" style="left: 5%; animation-duration: 10s; animation-delay: 0.5s;">❅</div>
+                    <div class="snowflake" style="left: 18%; animation-duration: 11s;">❆</div>
+                    <div class="snowflake" style="left: 32%; animation-duration: 9s; animation-delay: 1.5s;">❅</div>
+                    <div class="snowflake" style="left: 48%; animation-duration: 12s; animation-delay: 0.8s;">❆</div>
+                    <div class="snowflake" style="left: 58%; animation-duration: 10s;">❅</div>
+                    <div class="snowflake" style="left: 72%; animation-duration: 8s; animation-delay: 1.9s;">❆</div>
+                    <div class="snowflake" style="left: 88%; animation-duration: 11s; animation-delay: 0.4s;">❅</div>
+                </div>
+
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-lg-6 hero-content">
+                            <h1 class="animate__animated animate__fadeInLeft">
+                                <span class="christmas-icon">⭐</span> Mega Ofertas
+                            </h1>
+                            <h3 class="animate__animated animate__fadeInLeft animate__delay-1s">
+                                Aprovecha los descuentos de temporada
+                            </h3>
+                            <div class="discount-badge animate__animated animate__zoomIn animate__delay-2s">
+                                70% Descuento
+                            </div>
+                            <br>
+                            <a href="#" class="hero-btn animate__animated animate__fadeInUp animate__delay-3s">
+                                <i class="fas fa-shopping-cart"></i> Comprar Ahora
+                            </a>
+                        </div>
+                        <div class="col-lg-6 hero-image text-center">
+                            <img src="https://via.placeholder.com/500x450/8B0000/FFFFFF?text=Mega+Ofertas"
+                                 alt="Ofertas Especiales"
+                                 class="animate__animated animate__fadeInRight animate__delay-1s">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<!-- ========================================
+     CARRUSEL 1: REGALOS NAVIDEÑOS
+======================================== -->
+<section class="christmas-section section-christmas-gifts">
+    <div class="container">
+        <div class="section-title animate-on-scroll">
+            <h2>🎅 Regalos Perfectos 🎅</h2>
+            <p class="section-subtitle">Encuentra el regalo ideal para cada persona especial</p>
+        </div>
+
+        <div class="swiper gifts-swiper">
+            <div class="swiper-wrapper">
+
+                <!-- Producto 1 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-35%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Lego+Santa" alt="Set Lego Santa">
+                        </div>
+                        <h3 class="product-name">Set LEGO Casa de Santa Claus</h3>
+                        <div class="product-price">
+                            <span class="old-price">$129.99</span>
+                            $84.49
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge new">¡Nuevo!</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Peluche+Reno" alt="Peluche Reno">
+                        </div>
+                        <h3 class="product-name">Peluche Reno Rudolph Gigante</h3>
+                        <div class="product-price">
+                            $49.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge gift">Regalo</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Tren+Navidad" alt="Tren Navideño">
+                        </div>
+                        <h3 class="product-name">Tren Navideño Eléctrico Deluxe</h3>
+                        <div class="product-price">
+                            <span class="old-price">$199.99</span>
+                            $149.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-50%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Casa+Jengibre" alt="Casa de Jengibre">
+                        </div>
+                        <h3 class="product-name">Kit Casa de Jengibre Premium</h3>
+                        <div class="product-price">
+                            <span class="old-price">$39.99</span>
+                            $19.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge new">¡Nuevo!</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Trineo+RC" alt="Trineo RC">
+                        </div>
+                        <h3 class="product-name">Trineo RC Control Remoto</h3>
+                        <div class="product-price">
+                            $89.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-40%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Calendario+Adviento" alt="Calendario">
+                        </div>
+                        <h3 class="product-name">Calendario de Adviento Sorpresas</h3>
+                        <div class="product-price">
+                            <span class="old-price">$59.99</span>
+                            $35.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     CARRUSEL 2: JUGUETES PARA NAVIDAD
+======================================== -->
+<section class="christmas-section section-christmas-toys">
+    <div class="christmas-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <div class="container">
+        <div class="section-title animate-on-scroll">
+            <h2>🎄 Juguetes Navideños 🎄</h2>
+            <p class="section-subtitle">Los juguetes más deseados de la temporada</p>
+        </div>
+
+        <div class="swiper toys-swiper">
+            <div class="swiper-wrapper">
+
+                <!-- Producto 1 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">Top Ventas</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Barbie+Navidad" alt="Barbie Navidad">
+                        </div>
+                        <h3 class="product-name">Barbie Edición Navidad 2024</h3>
+                        <div class="product-price">
+                            $69.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge new">¡Nuevo!</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Drone+Navidad" alt="Drone">
+                        </div>
+                        <h3 class="product-name">Drone Navideño con Luces LED</h3>
+                        <div class="product-price">
+                            <span class="old-price">$149.99</span>
+                            $119.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-45%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Pista+Carreras" alt="Pista">
+                        </div>
+                        <h3 class="product-name">Pista de Carreras Navideña XL</h3>
+                        <div class="product-price">
+                            <span class="old-price">$99.99</span>
+                            $54.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge gift">Con Regalo</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Robot+Programable" alt="Robot">
+                        </div>
+                        <h3 class="product-name">Robot Programable Educativo</h3>
+                        <div class="product-price">
+                            $129.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-30%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Cocina+Juguete" alt="Cocina">
+                        </div>
+                        <h3 class="product-name">Cocina de Juguete Deluxe</h3>
+                        <div class="product-price">
+                            <span class="old-price">$159.99</span>
+                            $111.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge new">¡Nuevo!</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Puzzle+3D" alt="Puzzle">
+                        </div>
+                        <h3 class="product-name">Puzzle 3D Villa Navideña</h3>
+                        <div class="product-price">
+                            $44.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     CARRUSEL 3: OFERTAS ESPECIALES CON COUNTDOWN
+======================================== -->
+<section class="christmas-section section-christmas-deals">
+    <div class="container">
+        <div class="section-title animate-on-scroll">
+            <h2>⚡ Ofertas Flash ⚡</h2>
+            <p class="section-subtitle">¡Aprovecha antes de que se acaben!</p>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-timer animate-on-scroll">
+            <h3><i class="fas fa-clock"></i> La oferta termina en:</h3>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="number" id="days">12</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="hours">05</span>
+                    <span class="label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="minutes">32</span>
+                    <span class="label">Minutos</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="seconds">48</span>
+                    <span class="label">Segundos</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper deals-swiper">
+            <div class="swiper-wrapper">
+
+                <!-- Producto 1 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-60%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Nintendo+Switch" alt="Nintendo">
+                        </div>
+                        <h3 class="product-name">Nintendo Switch OLED Navidad</h3>
+                        <div class="product-price">
+                            <span class="old-price">$349.99</span>
+                            $139.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-55%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Tablet+Kids" alt="Tablet">
+                        </div>
+                        <h3 class="product-name">Tablet para Niños 10" HD</h3>
+                        <div class="product-price">
+                            <span class="old-price">$199.99</span>
+                            $89.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-70%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Patinete+Electrico" alt="Patinete">
+                        </div>
+                        <h3 class="product-name">Patinete Eléctrico Junior</h3>
+                        <div class="product-price">
+                            <span class="old-price">$299.99</span>
+                            $89.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-65%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/FFD700/333333?text=Bicicleta+Frozen" alt="Bicicleta">
+                        </div>
+                        <h3 class="product-name">Bicicleta Frozen 16"</h3>
+                        <div class="product-price">
+                            <span class="old-price">$179.99</span>
+                            $62.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-50%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/C41E3A/FFFFFF?text=Karaoke+Kids" alt="Karaoke">
+                        </div>
+                        <h3 class="product-name">Sistema Karaoke con Luces</h3>
+                        <div class="product-price">
+                            <span class="old-price">$129.99</span>
+                            $64.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge">-58%</span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/165B33/FFFFFF?text=Camara+Instantanea" alt="Cámara">
+                        </div>
+                        <h3 class="product-name">Cámara Instantánea Kids</h3>
+                        <div class="product-price">
+                            <span class="old-price">$119.99</span>
+                            $50.39
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     CARRUSEL 4: REYES MAGOS
+======================================== -->
+<section class="christmas-section section-reyes-magos">
+    <div class="container">
+        <div class="section-title animate-on-scroll">
+            <h2>👑 Especial Reyes Magos 👑</h2>
+            <p class="section-subtitle">Los regalos más mágicos para el Día de Reyes</p>
+        </div>
+
+        <div class="swiper reyes-swiper">
+            <div class="swiper-wrapper">
+
+                <!-- Producto 1 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Melchor
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/D4AF37/6B238E?text=Castillo+Medieval" alt="Castillo">
+                        </div>
+                        <h3 class="product-name">Castillo Medieval Playmobil</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            <span class="old-price">$249.99</span>
+                            $179.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Gaspar
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/6B238E/D4AF37?text=Telescopio+Kids" alt="Telescopio">
+                        </div>
+                        <h3 class="product-name">Telescopio Astronómico Junior</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            $159.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Baltasar
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/D4AF37/6B238E?text=Microscopio" alt="Microscopio">
+                        </div>
+                        <h3 class="product-name">Microscopio Científico Infantil</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            <span class="old-price">$89.99</span>
+                            $69.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Estrella
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/6B238E/D4AF37?text=Set+Magia" alt="Magia">
+                        </div>
+                        <h3 class="product-name">Set de Magia Profesional 100 Trucos</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            $54.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Oro
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/D4AF37/6B238E?text=Excavacion+Dinos" alt="Excavación">
+                        </div>
+                        <h3 class="product-name">Kit Excavación Dinosaurios</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            <span class="old-price">$69.99</span>
+                            $49.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Incienso
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/6B238E/D4AF37?text=Laboratorio+Quimica" alt="Laboratorio">
+                        </div>
+                        <h3 class="product-name">Laboratorio de Química Kids</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            $79.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 7 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Mirra
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/D4AF37/6B238E?text=Globo+Terraqueo" alt="Globo">
+                        </div>
+                        <h3 class="product-name">Globo Terráqueo Interactivo LED</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            <span class="old-price">$99.99</span>
+                            $74.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 8 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <span class="product-badge" style="background: var(--reyes-gold); color: var(--reyes-purple);">
+                            Real
+                        </span>
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/300x300/6B238E/D4AF37?text=Piano+Musical" alt="Piano">
+                        </div>
+                        <h3 class="product-name">Piano Teclado Musical 61 Teclas</h3>
+                        <div class="product-price" style="color: var(--reyes-purple);">
+                            $139.99
+                        </div>
+                        <button class="product-btn">
+                            <i class="fas fa-crown"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    // Hero Slider
+    const heroSwiper = new Swiper('.hero-swiper', {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        speed: 1000,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+
+    // Carrusel de Regalos
+    const giftsSwiper = new Swiper('.gifts-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+        },
+    });
+
+    // Carrusel de Juguetes
+    const toysSwiper = new Swiper('.toys-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+        },
+    });
+
+    // Carrusel de Ofertas
+    const dealsSwiper = new Swiper('.deals-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+        },
+    });
+
+    // Carrusel de Reyes Magos
+    const reyesSwiper = new Swiper('.reyes-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+        },
+    });
+
+    // Countdown Timer
+    function updateCountdown() {
+        const targetDate = new Date('2025-01-06T00:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.getElementById('countdown').innerHTML = '<h2 style="color: var(--christmas-red);">¡Feliz Día de Reyes!</h2>';
+        }
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Animación al hacer scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Más copos de nieve dinámicos (opcional)
+    function createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.textContent = Math.random() > 0.5 ? '❅' : '❆';
+        snowflake.style.left = Math.random() * 100 + '%';
+        snowflake.style.animationDuration = (Math.random() * 3 + 8) + 's';
+        snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        return snowflake;
+    }
+
+    // Agregar copos de nieve extra a todas las secciones
+    document.querySelectorAll('.snowflakes').forEach(container => {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                container.appendChild(createSnowflake());
+            }, i * 500);
+        }
+    });
+</script>
+
+</body>
+</html>
